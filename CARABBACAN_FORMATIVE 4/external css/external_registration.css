@@ -1,0 +1,84 @@
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    background: linear-gradient(0deg,rgba(135, 222, 139, 1) 0%, rgb(48, 146, 91) 100%);
+    margin: 0;
+    padding: 0;
+}
+
+.form {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+}
+
+form {
+    background-color:#ffffff;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5); 
+    width: 75%; 
+}
+
+#header-form {
+    margin-bottom: 20px;
+}
+
+#header-form h1 {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+form h2 {
+    font-size: Large;
+    font-weight: bold;
+}
+
+.row input, select{
+    padding: 10px;
+    width: 100%;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+input::placeholder {
+    color: gray;
+}
+
+textarea {
+    width: 100%;
+    height: 250px;
+}
+
+hr {
+    border-color: black;
+    height: 2px;
+    margin: 20px 0;
+}
+
+@media (max-width: 720px) {
+    .row input, .row select {
+        padding: 6px;
+    }
+
+    #header-form h1 {
+        font-size: large;
+        font-weight: bold;
+    }
+
+    form h2 {
+        font-size: medium;
+        font-weight: bold;
+    }
+
+    input::placeholder {
+        font-size: small;
+    }
+
+    select {
+        font-size: small;
+    }
+
+    input[type="date"] {
+        font-size: small;
+    }
+}
