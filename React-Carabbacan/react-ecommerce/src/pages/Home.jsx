@@ -1,40 +1,7 @@
+import { useEffect, useState } from "react";
+
 import ProductCard from "../components/ProductCard";
 import Carousel from "../components/Carousel";
-
-const products = [
-    {
-        name: "MERCEDES - AMG PETRONAS FORMULA ONE TEAM LAS VEGAS LONGSLEEVE TEE MEN",
-        oldPrice: 5000,
-        price: 3999,
-        discount: 20,
-        rating: 5,
-        image: "/src/assets/images/product1.avif"
-    },
-    {
-        name: "SUMMER SLIDE TRIM GRAPHIC T-SHIRT",
-        oldPrice: 1300,
-        price: 1100,
-        discount: 15,
-        rating: 5,
-        image: "/src/assets/images/product2.avif"
-    },
-    {
-        name: "VRCT Short Sleeve Tee",
-        oldPrice: 200,
-        price: 1699,
-        discount: 15,
-        rating: 5,
-        image: "/src/assets/images/product3.avif"
-    },
-    {
-        name: "ADICOLOR 3-STRIPES OVERSIZED TEE",
-        oldPrice: 2700,
-        price: 2400,
-        discount: 11,
-        rating: 5,
-        image: "/src/assets/images/product4.avif"
-    }
-];
 
 const banner = [
     {
@@ -46,6 +13,23 @@ const banner = [
 ];
 
 const Home = () => {
+    const [products, setProduct] = useState([]);
+
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetch("http://localhost:5000/api/products")
+            .then((res) => res.json())
+            .then((data) => {
+                setProduct(data);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error("API Fetch Error: ", error);
+                setLoading(false);
+            });
+    }, []);
+
     return (
         <div className='container'>
             {/* Banner */}
@@ -65,7 +49,7 @@ const Home = () => {
             {/* End of Season Products */}
             <h2 className="mx-3 my-4">END OF SEASON <span className="text-danger">SALE</span></h2>
             <div className="row">
-                {products.map((product, index) => (
+                {products.slice(0, 4).map((product, index) => (
                     <div className="col-lg-3 col-md-4 col-sm-6 mb-4" key={index}>
                         <ProductCard product={product} />
                     </div>

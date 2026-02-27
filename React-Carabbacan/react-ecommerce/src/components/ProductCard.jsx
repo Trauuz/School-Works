@@ -2,10 +2,10 @@ const ProductCard = ({ product }) => {
     return (
         <div className="card h-100 shadow-sm">
             {/* Image wrapper for zoom and badge */}
-            <div className="product-img-wrapper">
+            <div className="product-img-wrapper p-2">
                 <img
                     src={product.image}
-                    className="card-img-top product-img h-100"
+                    className="card-img-top product-img"
                     alt={product.name}
                 />
             </div>
@@ -13,7 +13,7 @@ const ProductCard = ({ product }) => {
             {/* Price section */}
             <div className="card-body d-flex gap-2 py-2">
                 <span className="fw-bold text-danger">
-                    ₱{product.price}
+                    ${product.price}
                 </span>
             </div>
 
