@@ -1,12 +1,17 @@
 <resources>
+    <!--SignUp Page -->
     <string name="app_name">Android Application</string>
-    <string name="et_firstName">First Name</string>
-    <string name="et_lastName">Last Name</string>
-    <string name="et_email">Email</string>
-    <string name="et_password">Password</string>
-    <string name="et_confirmPassword">Confirm Password</string>
-    <string name="btn_signup">Sign Up</string>
-    <string name="btn_cancelSignUp">Cancel</string>
+    <string name="etSignup_firstName">First Name</string>
+    <string name="etSignup_lastName">Last Name</string>
+    <string name="etSignup_email">Email</string>
+    <string name="etSignup_password">Password</string>
+    <string name="etSignup_confirmPassword">Confirm Password</string>
+    <string name="btnSignup_signup">Sign Up</string>
+    <string name="btnSignup_cancelSignUp">Cancel</string>
+
+    <!--LogIn Page -->
+    <string name="etLogin_email">Email</string>
+    <string name="etLogin_password">Password</string>
 
     <string name="hint_firstName">Please enter your first name</string>
     <string name="hint_lastName">Please enter your last name</string>
