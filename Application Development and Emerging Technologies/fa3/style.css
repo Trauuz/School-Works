@@ -1,0 +1,99 @@
+:root {
+    --primary-color: #f0c040;
+    --muted: #999;
+    --black: #000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Finlandica Headline", sans-serif;
+}
+
+/* Home */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.button-card {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.button-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: var(--black);
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+}
+
+.button-link:hover {
+    transform: scale(1.1);
+}
+
+/* Person Directory */
+.directory-container {
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin: 20px auto;
+}
+
+.directory-container h1 {
+    font-size: 2.5rem;
+    letter-spacing: -0.5px;
+}
+
+.directory-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.directory-table th {
+    background-color: var(--primary-color);
+    color: var(--black);
+    font-weight: 700;
+    font-size: 16px;
+    padding: 16px 12px;
+    text-align: center;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.directory-table td {
+    border-bottom: 1px solid #eee;
+    padding: 14px 12px;
+    font-size: 15px;
+    color: #333;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.table-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    display: block;
+    margin: 0 auto;
+}
