@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    background: #f9f9f9;
+    font-family: Arial, sans-serif;
+}
+
+/* Home */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.button-link {
+    display: inline-block;
+    padding: 10px 20px;
+    color: black;
+    text-decoration: none;
+    border: black solid 1px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+}
+
+.button-link:hover {
+    transform: scale(1.1);
+    background-color: #f0c040;
+    color: #000;
+}
+
+
+/* Length Conversion */
+.conversion-card {
+    max-width: 1000px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    margin: 20px auto;
+}
+
+.conversion-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.conversion-table th,
+.conversion-table td {
+    border: 1px solid #999;
+    padding: 12px 10px;
+    text-align: left;
+}
+
+.conversion-table .section-header td {
+    background: #f0c040;
+    font-weight: 700;
+    text-align: center;
+}
+
+
+/* Rank Program */
+.rank-card {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 600px;
+    padding: 20px;
+    margin: 0 auto;
+    border: #333 solid 1px;
+    border-radius: 20px;
+}
+
+.name-container {
+    grid-column: span 2 / span 2;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.picture-container {
+    grid-row: span 3 / span 3;
+    grid-column-start: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.picture-container img {
+    width: 100%;
+    height: auto;
+    max-width: 120px;
+}
+
+.grade-container {
+    grid-row-start: 2;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+.rank-container {
+    grid-row-start: 2;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+.button-container {
+    grid-column: span 2 / span 2;
+    grid-row-start: 3;
+    text-align: center;
+}
+
+.conversion-card p {
+    padding: 20px 10px;
+}

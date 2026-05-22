@@ -1,0 +1,117 @@
+:root {
+    --primary-color: black;
+    --accent-color: #cae2f1;
+    --accent-font-color: #218acc;
+    --muted: #6C757D;
+    --muted-background: #e9e9e9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Finlandica Headline", sans-serif;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container p {
+    color: var(--muted);
+}
+
+.button-link {
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: var(--accent-font-color);
+    cursor: pointer;
+    font-size: 16px;
+    margin: 15px 5px;
+}
+
+/* STUDENT FORM */
+form {
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+}
+
+input,
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background-color: var(--accent-font-color);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background-color: var(--accent-font-color);
+}
+
+
+/* MULTIPLICATION TABLE */
+.multiplication-table table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.multiplication-table td {
+    margin: 0;
+    padding: 20px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.multiplication-table .odd {
+    background-color: var(--accent-color);
+    border: 1px solid var(--accent-font-color);
+    color: var(--accent-font-color);
+}
+
+.multiplication-table .even {
+    background-color: var(--muted-background);
+    border: 1px solid var(--muted);
+    color: var(--muted)
+}
