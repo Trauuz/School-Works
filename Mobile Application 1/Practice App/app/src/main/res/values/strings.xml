@@ -7,11 +7,14 @@
     <string name="etSignup_password">Password</string>
     <string name="etSignup_confirmPassword">Confirm Password</string>
     <string name="btnSignup_signup">Sign Up</string>
-    <string name="btnSignup_cancelSignUp">Cancel</string>
+    <string name="btnSignup_cancelSignup">Cancel</string>
 
     <!--LogIn Page -->
     <string name="etLogin_email">Email</string>
     <string name="etLogin_password">Password</string>
+    <string name="btnLogin_Login">Password</string>
+    <string name="btnLogin_Signup">Sign Up</string>
+    <string name="btnLogin_ForgetPass">Forgot password?</string>
 
     <string name="hint_firstName">Please enter your first name</string>
     <string name="hint_lastName">Please enter your last name</string>

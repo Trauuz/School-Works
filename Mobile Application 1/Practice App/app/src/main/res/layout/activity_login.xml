@@ -11,42 +11,53 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
         android:text="@string/etLogin_email"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="39dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/etLogin_email"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/etLogin_password"
-        tools:layout_editor_absoluteX="38dp"
-        tools:layout_editor_absoluteY="152dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/etLogin_password"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/etLogin_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
         android:ems="10"
-        android:inputType="textEmailAddress"
         android:hint="@string/hint_email"
-        tools:layout_editor_absoluteX="117dp"
-        tools:layout_editor_absoluteY="27dp" />
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.698"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etLogin_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
         android:ems="10"
         android:inputType="textPassword"
-        tools:layout_editor_absoluteX="123dp"
-        tools:layout_editor_absoluteY="128dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etLogin_email"
+        app:layout_constraintTop_toBottomOf="@+id/etLogin_email" />
 
     <Button
         android:id="@+id/btnLogin_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="@string/btnLogin_Login"
         tools:layout_editor_absoluteX="91dp"
         tools:layout_editor_absoluteY="279dp" />
 
@@ -54,7 +65,7 @@
         android:id="@+id/btnLogin_signUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="@string/btnLogin_Signup"
         tools:layout_editor_absoluteX="213dp"
         tools:layout_editor_absoluteY="278dp" />
 
@@ -62,7 +73,7 @@
         android:id="@+id/btnLogin_forgetPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="@string/btnLogin_ForgetPass"
         tools:layout_editor_absoluteX="151dp"
         tools:layout_editor_absoluteY="340dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
