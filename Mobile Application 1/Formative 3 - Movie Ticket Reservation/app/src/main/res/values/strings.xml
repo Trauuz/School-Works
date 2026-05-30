@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Movie Reservation Ticket</string>
+    <string name="label_movie_title">Movie Title</string>
+    <string name="label_customer_name">Customer Name</string>
+    <string name="label_ticket_count">Number of Tickets</string>
+    <string name="btn_reserve">Reserve now</string>
+    <string name="summary_title">Reservation Summary</string>
+    <string name="summary_format">Movie: %1$s\nCustomer: %2$s\nTickets: %3$s</string>
+    <string name="error_fill_fields">Please fill in all fields.</string>
+</resources>
