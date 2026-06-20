@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION["color4"] = $_POST["color4"];
     $_SESSION["color5"] = $_POST["color5"];
 
-    header("Location: ./number3/resultColors.php");
+    header("Location: ./result_colors.php");
     exit();
 }
 ?>
