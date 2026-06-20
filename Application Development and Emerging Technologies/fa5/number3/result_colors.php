@@ -21,6 +21,10 @@ session_start();
 
             <h1 class="text-center mb-4">My Favorite Colors</h1>
 
+            <div class="text-center mb-4">
+                <img src="https://cdn-icons-png.flaticon.com/512/3161/3161837.png" alt="Colors" width="120">
+            </div>
+
             <div class="card p-4 bg-light">
 
                 <h4 style="color: <?php echo $_SESSION['color1']; ?>">

@@ -1,6 +1,6 @@
 :root {
     --primary-color: #f0c040;
-    --muted: #888;
+    --muted: #999;
     --black: #333;
 }
 
@@ -18,16 +18,8 @@ body {
     max-width: 600px;
     width: 100%;
     border: none;
-    border-radius: 16px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .08), 0 8px 24px rgba(0, 0, 0, .12);
-}
-
-/* Inner data/result cards */
-.card.bg-light {
-    background-color: #f9f9f7 !important;
-    border: none !important;
-    border-left: 3px solid var(--primary-color) !important;
-    border-radius: 8px !important;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .2);
 }
 
 .btn-custom {
@@ -38,36 +30,9 @@ body {
 
 h1 {
     font-weight: 700;
-    letter-spacing: -0.3px;
-    color: var(--black);
-}
-
-h3 {
-    font-weight: 600;
     color: var(--black);
 }
 
 .subtitle {
     color: var(--muted);
-    font-size: 0.95rem;
-}
-
-/* Form labels */
-.form-label {
-    font-weight: 600;
-    font-size: 0.875rem;
-    color: var(--black);
-}
-
-/* Focus ring — match the yellow theme instead of Bootstrap's blue */
-.form-control:focus,
-.form-select:focus {
-    border-color: #c9a020;
-    box-shadow: 0 0 0 0.2rem rgba(240, 192, 64, 0.28);
-}
-
-/* Slightly softer HR */
-hr {
-    opacity: 1;
-    border-color: rgba(0, 0, 0, 0.1);
 }
