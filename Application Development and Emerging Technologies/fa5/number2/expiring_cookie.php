@@ -31,32 +31,22 @@
             <p class="subtitle text-center mb-4">
                 Expiring Cookie Values
             </p>
-
             <div class="card p-3 bg-light">
-
                 <p>
                     <strong>First Name (10 sec):</strong>
                     <?php echo $_COOKIE['firstname'] ?? "Expired"; ?>
                 </p>
-
                 <p>
                     <strong>Middle Name (20 sec):</strong>
                     <?php echo $_COOKIE['middlename'] ?? "Expired"; ?>
                 </p>
-
                 <p>
                     <strong>Last Name (30 sec):</strong>
                     <?php echo $_COOKIE['lastname'] ?? "Expired"; ?>
                 </p>
-
             </div>
-
             <hr>
-
-            <a href="../index.php" class="btn btn-outline-dark">
-                Return to Home
-            </a>
-
+            <a href="../index.php" class="btn btn-outline-dark">Return to Home</a>
         </div>
     </div>
 

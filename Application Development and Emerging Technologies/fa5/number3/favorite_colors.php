@@ -33,51 +33,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <h1 class="text-center mb-3">PHP Session</h1>
 
-            <p class="subtitle text-center mb-4">
-                Enter Your 5 Favorite Colors
-            </p>
+            <p class="subtitle text-center mb-4">Enter Your 5 Favorite Colors</p>
 
             <form method="POST">
-
                 <div class="mb-3">
                     <label class="form-label">Favorite Color 1</label>
                     <input type="text" name="color1" class="form-control" placeholder="Red" required>
                 </div>
-
                 <div class="mb-3">
                     <label class="form-label">Favorite Color 2</label>
                     <input type="text" name="color2" class="form-control" placeholder="Yellow" required>
                 </div>
-
                 <div class="mb-3">
                     <label class="form-label">Favorite Color 3</label>
                     <input type="text" name="color3" class="form-control" placeholder="Orange" required>
                 </div>
-
                 <div class="mb-3">
                     <label class="form-label">Favorite Color 4</label>
                     <input type="text" name="color4" class="form-control" placeholder="Violet" required>
                 </div>
-
                 <div class="mb-4">
                     <label class="form-label">Favorite Color 5</label>
                     <input type="text" name="color5" class="form-control" placeholder="Blue" required>
                 </div>
-
                 <div class="d-grid">
                     <button type="submit" class="btn btn-outline-dark">
                         Send Colors
                     </button>
                 </div>
-
             </form>
 
             <hr>
 
-            <a href="../index.php" class="btn btn-outline-dark">
-                Return to Home
-            </a>
-
+            <a href="../index.php" class="btn btn-outline-dark">Return to Home</a>
         </div>
     </div>
 
