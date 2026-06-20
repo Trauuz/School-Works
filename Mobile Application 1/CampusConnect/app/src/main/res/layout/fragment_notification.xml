@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NotificationsFragment">
+    tools:context=".HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/notifications_fragment" />
+        android:text="Start spreading the newssss. Im leaving todayyyy. I want to be a part of it. Newy york, New yorkkkkkk.... These vagabond a shoes, Are longing to stray... Right through the very heart of it, New York, New Yorkkk..." />
 
 </FrameLayout>
