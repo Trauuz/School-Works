@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="MemberCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">18dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="MemberProfilePhoto">
+        <item name="android:layout_width">96dp</item>
+        <item name="android:layout_height">96dp</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
     <style name="MemberInfoCard">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginTop">10dp</item>
         <item name="android:background">@drawable/content_panel_background</item>
         <item name="android:lineSpacingExtra">2dp</item>
         <item name="android:padding">16dp</item>
@@ -17,4 +31,10 @@
         <item name="android:backgroundTint">?attr/colorPrimary</item>
         <item name="android:singleLine">true</item>
     </style>
+    <style name="CircleImage">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>
+
+
