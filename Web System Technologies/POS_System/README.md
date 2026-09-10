@@ -92,3 +92,18 @@ app.baseURL = 'http://localhost:8080/'
 ```text
 http://localhost/POS_System/public/
 ```
+
+## Deploying on Render
+
+The repository includes a root-level `render.yaml` Blueprint and a production
+Docker image for this application.
+
+1. Push the repository to GitHub, GitLab, or Bitbucket.
+2. In Render, select **New > Blueprint**.
+3. Connect this repository and apply the detected `pos-system` service.
+4. Wait for the Docker build and health check to finish, then open the URL that
+   Render assigns to the service.
+
+No database or additional environment variables are required. Render supplies
+the public URL and port automatically; the container configures CodeIgniter and
+Apache from those values when it starts.

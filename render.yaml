@@ -3,7 +3,7 @@ services:
     name: pos-system
     runtime: docker
     plan: free
-    dockerfilePath: ./Dockerfile
+    rootDir: Web System Technologies/POS_System
     healthCheckPath: /
     envVars:
       - key: CI_ENVIRONMENT
