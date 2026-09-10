@@ -11,13 +11,6 @@ The project contains four pages:
 
 Customer and user records are stored in static PHP arrays. This version does not use a database.
 
-## Project Links
-
-- GitHub repository: **[Add your GitHub repository URL here]**
-- Hosted application: **[Add your live application URL here]**
-
-Before submitting, replace both placeholders with working links. Open the hosted link and confirm that its pages and data match the code in this repository.
-
 ## Features
 
 - Four working CodeIgniter routes
@@ -28,15 +21,6 @@ Before submitting, replace both placeholders with working links. Open the hosted
 - Navigation links between all four pages
 - Simple responsive styling
 - No database dependency
-
-## Application Routes
-
-| Page | Route | Description |
-|---|---|---|
-| Home | `/` | Displays the POS landing page |
-| About | `/about` | Describes the purpose of the application |
-| Customer Accounts | `/customers` | Lists customer names, email addresses, and phone numbers |
-| User Accounts | `/users` | Lists usernames, full names, and roles |
 
 ## Requirements
 
@@ -103,83 +87,8 @@ app.baseURL = 'http://localhost:8080/'
 http://localhost/POS_System/public/
 ```
 
-## Running with CodeIgniter's Development Server
-
-From the project directory, run:
-
-```bash
-php spark serve
-```
-
-Then open:
-
-```text
-http://localhost:8080/
-```
-
-Keep the terminal open while using the application. Press `Ctrl+C` to stop the server.
-
-## Verifying the Application
-
-After starting the application, check each page:
-
-```text
-http://localhost/POS_System/public/
-http://localhost/POS_System/public/about
-http://localhost/POS_System/public/customers
-http://localhost/POS_System/public/users
-```
-
-Confirm that:
-
-- Every route opens without an error.
-- The navigation links work on every page.
-- The Customer Accounts page displays at least five records.
-- The User Accounts page displays at least five records.
-- The hosted version displays the same pages and records as this repository.
-
-If you are using `php spark serve`, use `http://localhost:8080` instead of `http://localhost/POS_System/public` in the addresses above.
-
-## Project Structure
-
-```text
-POS_System/
-├── app/
-│   ├── Config/
-│   │   └── Routes.php
-│   ├── Controllers/
-│   │   ├── Customers.php
-│   │   ├── Pages.php
-│   │   └── Users.php
-│   └── Views/
-│       ├── customers/
-│       │   └── index.php
-│       ├── pages/
-│       │   ├── about.php
-│       │   └── home.php
-│       └── users/
-│           └── index.php
-├── public/
-│   └── css/
-│       └── style.css
-├── writable/
-├── .env
-├── composer.json
-├── README.md
-└── spark
-```
-
 ## How the Project Works
 
 Routes in `app/Config/Routes.php` connect each URL to a controller method. The controllers prepare the page data and send it to the appropriate view. The customer and user views use PHP `foreach` loops to display each record as a table row.
 
 Because the records are static arrays, changes made through the browser are not stored permanently. Database support is outside the scope of this version.
-
-## Database
-
-No database or database export is included because this activity specifically uses static PHP arrays as temporary data sources.
-
-## Author
-
-- Name: **[Add your name here]**
-- Section: **[Add your section here]**

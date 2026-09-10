@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: pos-system
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    envVars:
+      - key: CI_ENVIRONMENT
+        value: production
