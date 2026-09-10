@@ -12,7 +12,6 @@ The project contains four pages:
 Customer and user records are stored in static PHP arrays. This version does not use a database.
 
 ## Features
-
 - Four working CodeIgniter routes
 - Separate controllers for pages, customers, and users
 - At least five sample customer records
@@ -22,8 +21,16 @@ Customer and user records are stored in static PHP arrays. This version does not
 - Simple responsive styling
 - No database dependency
 
-## Requirements
+## Application Routes
 
+| Page | Route | Description |
+|---|---|---|
+| Home | `/` | Displays the POS landing page |
+| About | `/about` | Describes the purpose of the application |
+| Customer Accounts | `/customers` | Lists customer names, email addresses, and phone numbers |
+| User Accounts | `/users` | Lists usernames, full names, and roles |
+
+## Requirements
 Install the following before setting up the project:
 
 - PHP 8.1 or later
@@ -33,7 +40,6 @@ Install the following before setting up the project:
 - XAMPP with Apache, or another compatible local web server
 
 ## Installation
-
 ### 1. Clone the repository
 
 ```bash
@@ -86,9 +92,3 @@ app.baseURL = 'http://localhost:8080/'
 ```text
 http://localhost/POS_System/public/
 ```
-
-## How the Project Works
-
-Routes in `app/Config/Routes.php` connect each URL to a controller method. The controllers prepare the page data and send it to the appropriate view. The customer and user views use PHP `foreach` loops to display each record as a table row.
-
-Because the records are static arrays, changes made through the browser are not stored permanently. Database support is outside the scope of this version.
