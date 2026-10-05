@@ -239,14 +239,43 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a
-                            class="nav-link <?= (isset($page) && $page == 'register') ? 'active' : '' ?>"
-                            href="<?= base_url('register') ?>"
-                        >
-                            Register
-                        </a>
-                    </li>
+                    <?php if (session()->get('isLogged') === true): ?>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link <?= (isset($page) && $page == 'dashboard') ? 'active' : '' ?>"
+                                href="<?= base_url('dashboard') ?>"
+                            >
+                                Dashboard
+                            </a>
+                        </li>
+
+                        <li class="nav-item ms-lg-2 d-flex align-items-center">
+                            <form action="<?= base_url('logout') ?>" method="POST" class="m-0">
+                                <?= csrf_field() ?>
+                                <button type="submit" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                                    <i class="fas fa-right-from-bracket me-1"></i>Logout
+                                </button>
+                            </form>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link <?= (isset($page) && $page == 'register') ? 'active' : '' ?>"
+                                href="<?= base_url('register') ?>"
+                            >
+                                Register
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a
+                                class="nav-link <?= (isset($page) && $page == 'login') ? 'active' : '' ?>"
+                                href="<?= base_url('login') ?>"
+                            >
+                                Login
+                            </a>
+                        </li>
+                    <?php endif; ?>
 
                 </ul>
             </div>

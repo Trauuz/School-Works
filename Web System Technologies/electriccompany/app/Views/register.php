@@ -378,6 +378,36 @@
 
                                 <div class="row g-3">
 
+                                    <!-- Username -->
+                                    <div class="col-12">
+                                        <label for="username" class="form-label fw-semibold">
+                                            Username *
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            class="form-control form-control-lg <?= isset($validation['username']) ? 'is-invalid' : '' ?>"
+                                            id="username"
+                                            name="username"
+                                            value="<?= esc(old('username')) ?>"
+                                            minlength="3"
+                                            maxlength="50"
+                                            pattern="[A-Za-z0-9_]+"
+                                            autocomplete="username"
+                                            required
+                                        >
+
+                                        <div class="form-text">
+                                            Use 3–50 letters, numbers, or underscores.
+                                        </div>
+
+                                        <?php if (isset($validation['username'])): ?>
+                                            <div class="invalid-feedback">
+                                                <?= esc($validation['username']) ?>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+
                                     <!-- Password -->
                                     <div class="col-md-6">
                                         <label for="password" class="form-label fw-semibold">

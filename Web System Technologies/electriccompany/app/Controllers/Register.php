@@ -31,6 +31,7 @@ class Register extends BaseController
         $validation = \Config\Services::validation();
 
         $validation->setRules([
+            'username'        => 'required|min_length[3]|max_length[50]|regex_match[/^[a-zA-Z0-9_]+$/]|is_unique[users.username]',
             'first_name'      => 'required|min_length[2]|max_length[100]',
             'last_name'       => 'required|min_length[2]|max_length[100]',
             'email'           => 'required|valid_email|is_unique[users.email]',
@@ -54,6 +55,7 @@ class Register extends BaseController
         }
 
         $userData = [
+            'username'        => trim((string) $this->request->getPost('username')),
             'first_name'      => $this->request->getPost('first_name'),
             'last_name'       => $this->request->getPost('last_name'),
             'email'           => $this->request->getPost('email'),

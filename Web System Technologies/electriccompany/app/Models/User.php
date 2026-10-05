@@ -14,6 +14,9 @@ class User extends Model
     protected $protectFields = true;
 
     protected $allowedFields = [
+        'id',
+        'username',
+        'password',
         'first_name',
         'last_name',
         'email',
@@ -22,7 +25,6 @@ class User extends Model
         'city',
         'state',
         'zip_code',
-        'password',
         'user_type',
         'is_active',
         'email_verified',
@@ -47,6 +49,7 @@ class User extends Model
 
     // Validation
     protected $validationRules = [
+        'username'   => 'required|min_length[3]|max_length[50]|regex_match[/^[a-zA-Z0-9_]+$/]|is_unique[users.username,id,{id}]',
         'first_name' => 'required|min_length[2]|max_length[100]',
         'last_name'  => 'required|min_length[2]|max_length[100]',
         'email'      => 'required|valid_email|is_unique[users.email,id,{id}]',
@@ -56,6 +59,10 @@ class User extends Model
     ];
 
     protected $validationMessages = [
+        'username' => [
+            'regex_match' => 'Username may only contain letters, numbers, and underscores.',
+            'is_unique'   => 'This username is already taken.',
+        ],
         'email' => [
             'is_unique' => 'This email address is already registered.',
         ],
@@ -111,5 +118,13 @@ class User extends Model
     public function findByEmail($email)
     {
         return $this->where('email', $email)->first();
+    }
+
+    /**
+     * Find a user by username.
+     */
+    public function findByUsername($username)
+    {
+        return $this->where('username', $username)->first();
     }
 }
