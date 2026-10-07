@@ -199,6 +199,8 @@ class Database extends Config
             $this->default['port'] = (int) (getenv('DB_PORT') ?: 5432);
             $this->default['DBDriver'] = 'Postgre';
             $this->default['DBDebug'] = false;
+            $this->default['charset'] = 'UTF8';
+            $this->default['DBCollat'] = '';
         }
 
         // Ensure that we always set the database group to 'tests' if
