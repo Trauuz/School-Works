@@ -8,3 +8,36 @@ services:
     envVars:
       - key: CI_ENVIRONMENT
         value: production
+  - type: web
+    name: electriccompany
+    runtime: docker
+    plan: free
+    rootDir: Web System Technologies/electriccompany
+    healthCheckPath: /
+    envVars:
+      - key: CI_ENVIRONMENT
+        value: production
+      - key: DB_HOST
+        fromDatabase:
+          name: electriccompany-db
+          property: host
+      - key: DB_DATABASE
+        fromDatabase:
+          name: electriccompany-db
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: electriccompany-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: electriccompany-db
+          property: password
+      - key: DB_PORT
+        fromDatabase:
+          name: electriccompany-db
+          property: port
+
+databases:
+  - name: electriccompany-db
+    plan: free

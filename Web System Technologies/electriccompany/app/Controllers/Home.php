@@ -259,19 +259,10 @@ class Home extends BaseController
 
             $user = (new User())->findByUsername($credentials['username']);
 
-            // New accounts should store passwords with password_hash().
-            // The second condition keeps existing classroom databases
-            // with plaintext passwords working.
             $validPassword = $user !== null
-                && (
-                    password_verify(
-                        $credentials['password'],
-                        $user['password']
-                    )
-                    || hash_equals(
-                        (string) $user['password'],
-                        (string) $credentials['password']
-                    )
+                && password_verify(
+                    $credentials['password'],
+                    $user['password']
                 );
 
             if (!$validPassword) {

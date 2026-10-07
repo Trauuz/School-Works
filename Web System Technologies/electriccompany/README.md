@@ -58,3 +58,17 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 - json (enabled by default - don't turn it off)
 - [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
 - [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+
+## Deploying on Render
+
+This repository includes a root-level Render Blueprint that provisions both the
+`electriccompany` web service and its PostgreSQL database.
+
+1. Push the repository to GitHub, GitLab, or Bitbucket.
+2. In Render, choose **New > Blueprint** and connect the repository.
+3. Apply the Blueprint and wait for the Docker build to finish.
+
+At startup, the service configures its public URL and port, connects to the
+managed database, and runs all CodeIgniter migrations before Apache starts.
+Database credentials are supplied by Render and do not need to be entered
+manually.
