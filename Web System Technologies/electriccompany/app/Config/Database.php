@@ -196,11 +196,18 @@ class Database extends Config
             $this->default['database'] = getenv('DB_DATABASE') ?: $this->default['database'];
             $this->default['username'] = getenv('DB_USERNAME') ?: $this->default['username'];
             $this->default['password'] = getenv('DB_PASSWORD') ?: $this->default['password'];
-            $this->default['port'] = (int) (getenv('DB_PORT') ?: 5432);
-            $this->default['DBDriver'] = 'Postgre';
+            $this->default['port'] = (int) (getenv('DB_PORT') ?: 3306);
+            $this->default['DBDriver'] = 'MySQLi';
             $this->default['DBDebug'] = false;
-            $this->default['charset'] = 'UTF8';
-            $this->default['DBCollat'] = '';
+            $this->default['charset'] = 'utf8mb4';
+            $this->default['DBCollat'] = 'utf8mb4_general_ci';
+
+            if (filter_var(getenv('DB_SSL') ?: false, FILTER_VALIDATE_BOOL)) {
+                // Require an encrypted connection for managed MySQL services
+                // such as Aiven. Certificate verification can be enabled by
+                // supplying a CA file in a future deployment.
+                $this->default['encrypt'] = ['ssl_verify' => false];
+            }
         }
 
         // Ensure that we always set the database group to 'tests' if

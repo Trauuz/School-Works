@@ -61,14 +61,18 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 
 ## Deploying on Render
 
-This repository includes a root-level Render Blueprint that provisions both the
-`electriccompany` web service and its PostgreSQL database.
+This repository includes a root-level Render Blueprint for the
+`electriccompany` web service. The application uses an external MySQL database,
+such as Aiven for MySQL.
 
 1. Push the repository to GitHub, GitLab, or Bitbucket.
 2. In Render, choose **New > Blueprint** and connect the repository.
-3. Apply the Blueprint and wait for the Docker build to finish.
+3. Set `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, and `DB_PASSWORD`
+   to the values shown by your MySQL provider. For Aiven, use the connection
+   information from **Quick connect**.
+4. Apply the Blueprint and wait for the Docker build to finish.
 
-At startup, the service configures its public URL and port, connects to the
-managed database, and runs all CodeIgniter migrations before Apache starts.
-Database credentials are supplied by Render and do not need to be entered
-manually.
+At startup, the service configures its public URL and port, connects to MySQL
+over TLS, and runs all CodeIgniter migrations before Apache starts. Database
+credentials are stored as secret Render environment variables and must not be
+committed to the repository.
