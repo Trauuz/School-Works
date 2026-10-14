@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="viewController">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <scene sceneID="welcomeScene">
+            <objects>
+                <viewController id="viewController" customClass="ViewController" customModule="CampusCompanion" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mainView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Campus Companion" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="1" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="titleLabel">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Your Campus, In Your Pocket" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="subtitleLabel">
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="campusImageView">
+                                <rect key="frame" x="121.5" y="242" width="150" height="150"/>
+                                <color key="tintColor" systemColor="systemBlueColor"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" translatesAutoresizingMaskIntoConstraints="NO" id="getStartedButton">
+                                <state key="normal" title="Get Started"/>
+                                <connections>
+                                    <action selector="getStartedTapped:" destination="viewController" eventType="touchUpInside" id="getStartedAction"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="safeArea"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="titleLabel" firstAttribute="top" secondItem="safeArea" secondAttribute="top" constant="60" id="titleTop"/>
+                            <constraint firstItem="titleLabel" firstAttribute="leading" secondItem="safeArea" secondAttribute="leading" constant="20" id="titleLeading"/>
+                            <constraint firstItem="safeArea" firstAttribute="trailing" secondItem="titleLabel" secondAttribute="trailing" constant="20" id="titleTrailing"/>
+                            <constraint firstItem="subtitleLabel" firstAttribute="top" secondItem="titleLabel" secondAttribute="bottom" constant="8" id="subtitleTop"/>
+                            <constraint firstItem="subtitleLabel" firstAttribute="leading" secondItem="safeArea" secondAttribute="leading" constant="20" id="subtitleLeading"/>
+                            <constraint firstItem="safeArea" firstAttribute="trailing" secondItem="subtitleLabel" secondAttribute="trailing" constant="20" id="subtitleTrailing"/>
+                            <constraint firstItem="campusImageView" firstAttribute="top" secondItem="subtitleLabel" secondAttribute="bottom" constant="40" id="imageTop"/>
+                            <constraint firstItem="campusImageView" firstAttribute="centerX" secondItem="safeArea" secondAttribute="centerX" id="imageCenterX"/>
+                            <constraint firstItem="campusImageView" firstAttribute="width" constant="150" id="imageWidth"/>
+                            <constraint firstItem="campusImageView" firstAttribute="height" constant="150" id="imageHeight"/>
+                            <constraint firstItem="getStartedButton" firstAttribute="top" secondItem="campusImageView" secondAttribute="bottom" constant="24" id="buttonTop"/>
+                            <constraint firstItem="getStartedButton" firstAttribute="centerX" secondItem="safeArea" secondAttribute="centerX" id="buttonCenterX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="campusImageView" destination="campusImageView" id="campusImageOutlet"/>
+                        <outlet property="subtitleLabel" destination="subtitleLabel" id="subtitleOutlet"/>
+                        <outlet property="titleLabel" destination="titleLabel" id="titleOutlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="firstResponder" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="labelColor"><color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/></systemColor>
+        <systemColor name="secondaryLabelColor"><color red="0.2352941176" green="0.2352941176" blue="0.262745098" alpha="0.6" colorSpace="custom" customColorSpace="sRGB"/></systemColor>
+        <systemColor name="systemBackgroundColor"><color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/></systemColor>
+        <systemColor name="systemBlueColor"><color red="0.0" green="0.4784313725" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/></systemColor>
+    </resources>
+</document>
