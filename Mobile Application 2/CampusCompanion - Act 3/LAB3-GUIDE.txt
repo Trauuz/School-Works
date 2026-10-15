@@ -1,0 +1,42 @@
+Campus Companion - Laboratory Exercise 3
+
+Open CampusCompanion.xcodeproj in Xcode. Choose the CampusCompanion scheme
+and an iPhone simulator, then press Command-R.
+
+Implemented requirements
+- CampusAnnouncement: immutable title, date, category, priority, and postedBy.
+- Six sample campus announcements.
+- Campus Announcements button below Explore Campus, linked by a Show segue.
+- Storyboard UITableViewController with a custom AnnouncementCell prototype.
+- Connected icon, title, and date outlets; Auto Layout and self-sizing rows.
+- Row selection uses ShowAnnouncementDetailSegue and prepare(for:sender:).
+- Existing personalized Explore Campus welcome flow is retained.
+- Urgent announcements have a red warning icon, URGENT text, and tinted row.
+- Detail includes all five announcement fields.
+- configure(with:) explicitly resets styling for both urgent and normal rows.
+
+Try it
+1. Enter your name, select Faculty, turn notifications on, and add guests.
+2. Tap Explore Campus and verify the personalized information, then go Back.
+3. Tap Campus Announcements. Review all six rows and scroll the list.
+4. Tap Campus Wi-Fi Maintenance Notice to see its Urgent priority and office.
+5. Go Back and open a Normal announcement to compare.
+
+Files to study
+CampusAnnouncement.swift - data model and sample collection.
+AnnouncementCell.swift - reusable row configuration.
+AnnouncementsViewController.swift - data source, row selection, and data passing.
+DetailViewController.swift - announcement or personalized welcome branch.
+Base.lproj/Main.storyboard - prototype cell, outlets, constraints, and segues.
+
+This is the completed custom-cell version (Parts 2 and 3), which supersedes
+the temporary built-in Subtitle cells introduced in Part 1.
+The earlier Downloads projects were not modified.
+
+Verification on October 3, 2026
+- Xcode simulator Debug build succeeded with no compiler warnings.
+- Storyboard destinations, three custom-cell outlets, and manual segue checked.
+- Installed and launched successfully on the iPhone 18 Pro simulator (iOS 27).
+- Welcome screen and Campus Announcements button visually verified.
+- Interactive row navigation and welcome regression checks still need a manual
+  run: macOS accessibility control timed out during this session.

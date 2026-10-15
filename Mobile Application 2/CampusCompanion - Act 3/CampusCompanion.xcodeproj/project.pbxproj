@@ -1,0 +1,75 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A10000000000000000000011 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000001 /* AppDelegate.swift */; };
+		A10000000000000000000012 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000002 /* SceneDelegate.swift */; };
+		A10000000000000000000013 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000003 /* ViewController.swift */; };
+		A10000000000000000000014 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000004 /* Main.storyboard */; };
+		A10000000000000000000015 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000005 /* LaunchScreen.storyboard */; };
+		A10000000000000000000017 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000009 /* DetailViewController.swift */; };
+		B10000000000000000000001 = {isa = PBXBuildFile; fileRef = B20000000000000000000001; };
+		B10000000000000000000002 = {isa = PBXBuildFile; fileRef = B20000000000000000000002; };
+		B10000000000000000000003 = {isa = PBXBuildFile; fileRef = B20000000000000000000003; };
+/* End PBXBuildFile section */
+        B10000000000000000000004 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A10000000000000000000007; };
+
+/* Begin PBXFileReference section */
+		A10000000000000000000001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A10000000000000000000002 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		A10000000000000000000003 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A10000000000000000000004 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A10000000000000000000005 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A10000000000000000000006 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A10000000000000000000007 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A10000000000000000000008 /* CampusCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CampusCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A10000000000000000000009 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		B20000000000000000000001 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusCompanion/CampusAnnouncement.swift; sourceTree = SOURCE_ROOT; };
+		B20000000000000000000002 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusCompanion/AnnouncementCell.swift; sourceTree = SOURCE_ROOT; };
+		B20000000000000000000003 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusCompanion/AnnouncementsViewController.swift; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		A10000000000000000000020 = {isa = PBXGroup; children = (A10000000000000000000021 /* CampusCompanion */, A10000000000000000000022 /* Products */); sourceTree = "<group>"; };
+		A10000000000000000000021 /* CampusCompanion */ = {isa = PBXGroup; children = (B20000000000000000000001, B20000000000000000000002, B20000000000000000000003, A10000000000000000000001 /* AppDelegate.swift */, A10000000000000000000002 /* SceneDelegate.swift */, A10000000000000000000003 /* ViewController.swift */, A10000000000000000000009 /* DetailViewController.swift */, A10000000000000000000004 /* Main.storyboard */, A10000000000000000000005 /* LaunchScreen.storyboard */, A10000000000000000000007 /* Assets.xcassets */, A10000000000000000000006 /* Info.plist */); path = CampusCompanion; sourceTree = "<group>"; };
+		A10000000000000000000022 /* Products */ = {isa = PBXGroup; children = (A10000000000000000000008 /* CampusCompanion.app */); name = Products; sourceTree = "<group>"; };
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A10000000000000000000030 /* CampusCompanion */ = {isa = PBXNativeTarget; buildConfigurationList = A10000000000000000000031 /* Build configuration list for PBXNativeTarget \"CampusCompanion\" */; buildPhases = (A10000000000000000000032 /* Sources */, A10000000000000000000033 /* Frameworks */, A10000000000000000000034 /* Resources */); buildRules = (); dependencies = (); name = CampusCompanion; productName = CampusCompanion; productReference = A10000000000000000000008 /* CampusCompanion.app */; productType = "com.apple.product-type.application"; };
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A10000000000000000000040 /* Project object */ = {isa = PBXProject; attributes = {LastSwiftUpdateCheck = 1600; LastUpgradeCheck = 1600; TargetAttributes = {A10000000000000000000030 = {CreatedOnToolsVersion = 16.0;};};}; buildConfigurationList = A10000000000000000000041 /* Build configuration list for PBXProject \"CampusCompanion\" */; compatibilityVersion = "Xcode 14.0"; developmentRegion = en; hasScannedForEncodings = 0; knownRegions = (en, Base); mainGroup = A10000000000000000000020; productRefGroup = A10000000000000000000022 /* Products */; projectDirPath = ""; projectRoot = ""; targets = (A10000000000000000000030 /* CampusCompanion */); };
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A10000000000000000000034 /* Resources */ = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (B10000000000000000000004 /* Assets.xcassets in Resources */, A10000000000000000000014 /* Main.storyboard in Resources */, A10000000000000000000015 /* LaunchScreen.storyboard in Resources */); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A10000000000000000000032 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (B10000000000000000000001, B10000000000000000000002, B10000000000000000000003, A10000000000000000000011 /* AppDelegate.swift in Sources */, A10000000000000000000012 /* SceneDelegate.swift in Sources */, A10000000000000000000013 /* ViewController.swift in Sources */, A10000000000000000000017 /* DetailViewController.swift in Sources */); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A10000000000000000000033 /* Frameworks */ = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A10000000000000000000050 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {CLANG_CXX_LANGUAGE_STANDARD = "gnu++20"; CLANG_ENABLE_MODULES = YES; CODE_SIGN_STYLE = Automatic; DEVELOPMENT_TEAM = ""; EXECUTABLE_NAME = "$(PRODUCT_NAME)"; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = CampusCompanion/Info.plist; IPHONEOS_DEPLOYMENT_TARGET = 17.0; PRODUCT_BUNDLE_IDENTIFIER = edu.school.mad2.CampusCompanion; PRODUCT_NAME = "$(TARGET_NAME)"; SDKROOT = iphoneos; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = "1,2";}; name = Debug; };
+		A10000000000000000000051 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {CLANG_CXX_LANGUAGE_STANDARD = "gnu++20"; CLANG_ENABLE_MODULES = YES; CODE_SIGN_STYLE = Automatic; DEVELOPMENT_TEAM = ""; EXECUTABLE_NAME = "$(PRODUCT_NAME)"; GENERATE_INFOPLIST_FILE = NO; INFOPLIST_FILE = CampusCompanion/Info.plist; IPHONEOS_DEPLOYMENT_TARGET = 17.0; PRODUCT_BUNDLE_IDENTIFIER = edu.school.mad2.CampusCompanion; PRODUCT_NAME = "$(TARGET_NAME)"; SDKROOT = iphoneos; SWIFT_VERSION = 5.0; TARGETED_DEVICE_FAMILY = "1,2";}; name = Release; };
+		A10000000000000000000052 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {ALWAYS_SEARCH_USER_PATHS = NO; CLANG_ENABLE_MODULES = YES; GCC_C_LANGUAGE_STANDARD = gnu17; SDKROOT = iphoneos;}; name = Debug; };
+		A10000000000000000000053 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {ALWAYS_SEARCH_USER_PATHS = NO; CLANG_ENABLE_MODULES = YES; GCC_C_LANGUAGE_STANDARD = gnu17; SDKROOT = iphoneos;}; name = Release; };
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A10000000000000000000031 /* Build configuration list for PBXNativeTarget \"CampusCompanion\" */ = {isa = XCConfigurationList; buildConfigurations = (A10000000000000000000050 /* Debug */, A10000000000000000000051 /* Release */); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		A10000000000000000000041 /* Build configuration list for PBXProject \"CampusCompanion\" */ = {isa = XCConfigurationList; buildConfigurations = (A10000000000000000000052 /* Debug */, A10000000000000000000053 /* Release */); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+/* End XCConfigurationList section */
+	};
+	rootObject = A10000000000000000000040 /* Project object */;
+}

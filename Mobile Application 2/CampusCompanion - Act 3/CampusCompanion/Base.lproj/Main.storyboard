@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="25098" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="navigationController">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="25073"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="navigationScene">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="navigationController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="navigationBar">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" systemColor="systemBackgroundColor"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="welcomeController" kind="relationship" relationship="rootViewController" id="rootRelationship"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="navResponder" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-850" y="0.0"/>
+        </scene>
+        <!--Campus Companion-->
+        <scene sceneID="welcomeScene">
+            <objects>
+                <viewController id="welcomeController" customClass="ViewController" customModule="CampusCompanion" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="welcomeView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Campus Companion" textAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="titleLabel">
+                                <rect key="frame" x="20" y="188" width="353" height="33.666666666666657"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Your Campus, In Your Pocket" textAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="subtitleLabel">
+                                <rect key="frame" x="20" y="229.66666666666666" width="353" height="19.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="GraduationLogo" translatesAutoresizingMaskIntoConstraints="NO" id="campusImageView">
+                                <rect key="frame" x="146.66666666666666" y="261" width="100" height="100"/>
+                                <color key="tintColor" systemColor="systemBlueColor"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="getStartedButton">
+                                <rect key="frame" x="156.66666666666666" y="369" width="80" height="30"/>
+                                <state key="normal" title="Get Started"/>
+                                <connections>
+                                    <action selector="getStartedTapped:" destination="welcomeController" eventType="touchUpInside" id="getStartedAction"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Notify me about events" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="notifyLabel">
+                                <rect key="frame" x="32" y="465" width="168.66666666666666" height="19.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="notifySwitch">
+                                <rect key="frame" x="300" y="460.66666666666669" width="63" height="28"/>
+                            </switch>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="roleSegmentedControl">
+                                <rect key="frame" x="32" y="500.33333333333326" width="329" height="32"/>
+                                <segments>
+                                    <segment title="Student"/>
+                                    <segment title="Faculty"/>
+                                </segments>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Preferred Event Date" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dateLabel">
+                                <rect key="frame" x="32" y="547.33333333333337" width="151.33333333333334" height="19.333333333333371"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            </label>
+                            <datePicker opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" preferredDatePickerStyle="compact" translatesAutoresizingMaskIntoConstraints="NO" id="eventDatePicker">
+                                <rect key="frame" x="133" y="570.66666666666663" width="127.33333333333331" height="34.333333333333371"/>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Guests: 0" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="guestsLabel">
+                                <rect key="frame" x="31.999999999999993" y="613" width="69.333333333333314" height="19.333333333333371"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            </label>
+                            <stepper opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="guestsStepper">
+                                <rect key="frame" x="267" y="606.66666666666663" width="94" height="32"/>
+                                <connections>
+                                    <action selector="guestsStepperChanged:" destination="welcomeController" eventType="valueChanged" id="stepperAction"/>
+                                </connections>
+                            </stepper>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exploreButton">
+                                <rect key="frame" x="140.66666666666666" y="652.33333333333337" width="112" height="30"/>
+                                <state key="normal" title="Explore Campus"/>
+                                <connections>
+                                    <action selector="exploreButtonTapped:" destination="welcomeController" eventType="touchUpInside" id="exploreAction"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" translatesAutoresizingMaskIntoConstraints="NO" id="announcementsButton">
+                                <rect key="frame" x="105" y="698" width="183" height="30"/>
+                                <state key="normal" title="Campus Announcements"/>
+                                <connections>
+                                    <segue destination="announcementsController" kind="show" identifier="ShowAnnouncementsSegue" id="showAnnouncements"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nameTextField">
+                                <rect key="frame" x="32" y="418" width="329" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="welcomeSafeArea"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="announcementsButton" firstAttribute="top" secondItem="exploreButton" secondAttribute="bottom" constant="16" id="announcementsTop"/>
+                            <constraint firstItem="announcementsButton" firstAttribute="centerX" secondItem="welcomeSafeArea" secondAttribute="centerX" id="announcementsCenter"/>
+                            <constraint firstItem="eventDatePicker" firstAttribute="width" constant="160" id="datePickerWidth"/>
+                            <constraint firstItem="notifySwitch" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="notifyLabel" secondAttribute="trailing" constant="8" id="notifySpacing"/>
+                            <constraint firstItem="guestsStepper" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="guestsLabel" secondAttribute="trailing" constant="8" id="guestsSpacing"/>
+                            <constraint firstItem="welcomeSafeArea" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dateLabel" secondAttribute="trailing" constant="32" id="dateLabelTrailing"/>
+                            <constraint firstItem="dateLabel" firstAttribute="leading" secondItem="welcomeSafeArea" secondAttribute="leading" constant="32" id="dateLabelLeading"/>
+                            <constraint firstItem="dateLabel" firstAttribute="top" secondItem="roleSegmentedControl" secondAttribute="bottom" constant="16" id="dateLabelTop"/>
+                            <constraint firstItem="eventDatePicker" firstAttribute="centerX" secondItem="welcomeSafeArea" secondAttribute="centerX" id="datePickerCenter"/>
+                            <constraint firstItem="eventDatePicker" firstAttribute="top" secondItem="dateLabel" secondAttribute="bottom" constant="4" id="datePickerTop"/>
+                            <constraint firstItem="exploreButton" firstAttribute="centerX" secondItem="welcomeSafeArea" secondAttribute="centerX" id="exploreCenter"/>
+                            <constraint firstItem="exploreButton" firstAttribute="top" secondItem="guestsLabel" secondAttribute="bottom" constant="20" id="exploreTop"/>
+                            <constraint firstItem="guestsLabel" firstAttribute="leading" secondItem="welcomeSafeArea" secondAttribute="leading" constant="32" id="guestsLeading"/>
+                            <constraint firstItem="guestsLabel" firstAttribute="top" secondItem="eventDatePicker" secondAttribute="bottom" constant="8" id="guestsTop"/>
+                            <constraint firstItem="campusImageView" firstAttribute="centerX" secondItem="welcomeSafeArea" secondAttribute="centerX" id="imageCenter"/>
+                            <constraint firstItem="campusImageView" firstAttribute="height" constant="100" id="imageHeight"/>
+                            <constraint firstItem="campusImageView" firstAttribute="top" secondItem="subtitleLabel" secondAttribute="bottom" constant="12" id="imageTop"/>
+                            <constraint firstItem="campusImageView" firstAttribute="width" constant="100" id="imageWidth"/>
+                            <constraint firstItem="nameTextField" firstAttribute="leading" secondItem="welcomeSafeArea" secondAttribute="leading" constant="32" id="nameLeading"/>
+                            <constraint firstItem="nameTextField" firstAttribute="top" secondItem="getStartedButton" secondAttribute="bottom" constant="16" id="nameTop"/>
+                            <constraint firstItem="welcomeSafeArea" firstAttribute="trailing" secondItem="nameTextField" secondAttribute="trailing" constant="32" id="nameTrailing"/>
+                            <constraint firstItem="notifyLabel" firstAttribute="leading" secondItem="welcomeSafeArea" secondAttribute="leading" constant="32" id="notifyLeading"/>
+                            <constraint firstItem="notifyLabel" firstAttribute="top" secondItem="nameTextField" secondAttribute="bottom" constant="16" id="notifyTop"/>
+                            <constraint firstItem="roleSegmentedControl" firstAttribute="leading" secondItem="welcomeSafeArea" secondAttribute="leading" constant="32" id="roleLeading"/>
+                            <constraint firstItem="roleSegmentedControl" firstAttribute="top" secondItem="notifyLabel" secondAttribute="bottom" constant="16" id="roleTop"/>
+                            <constraint firstItem="welcomeSafeArea" firstAttribute="trailing" secondItem="roleSegmentedControl" secondAttribute="trailing" constant="32" id="roleTrailing"/>
+                            <constraint firstItem="getStartedButton" firstAttribute="centerX" secondItem="welcomeSafeArea" secondAttribute="centerX" id="startCenter"/>
+                            <constraint firstItem="getStartedButton" firstAttribute="top" secondItem="campusImageView" secondAttribute="bottom" constant="8" id="startTop"/>
+                            <constraint firstItem="guestsStepper" firstAttribute="centerY" secondItem="guestsLabel" secondAttribute="centerY" id="stepperCenterY"/>
+                            <constraint firstItem="welcomeSafeArea" firstAttribute="trailing" secondItem="guestsStepper" secondAttribute="trailing" constant="32" id="stepperTrailing"/>
+                            <constraint firstItem="subtitleLabel" firstAttribute="leading" secondItem="welcomeSafeArea" secondAttribute="leading" constant="20" id="subtitleLeading"/>
+                            <constraint firstItem="subtitleLabel" firstAttribute="top" secondItem="titleLabel" secondAttribute="bottom" constant="8" id="subtitleTop"/>
+                            <constraint firstItem="welcomeSafeArea" firstAttribute="trailing" secondItem="subtitleLabel" secondAttribute="trailing" constant="20" id="subtitleTrailing"/>
+                            <constraint firstItem="notifySwitch" firstAttribute="centerY" secondItem="notifyLabel" secondAttribute="centerY" id="switchCenterY"/>
+                            <constraint firstItem="welcomeSafeArea" firstAttribute="trailing" secondItem="notifySwitch" secondAttribute="trailing" constant="32" id="switchTrailing"/>
+                            <constraint firstItem="titleLabel" firstAttribute="leading" secondItem="welcomeSafeArea" secondAttribute="leading" constant="20" id="titleLeading"/>
+                            <constraint firstItem="titleLabel" firstAttribute="top" secondItem="welcomeSafeArea" secondAttribute="top" constant="16" id="titleTop"/>
+                            <constraint firstItem="welcomeSafeArea" firstAttribute="trailing" secondItem="titleLabel" secondAttribute="trailing" constant="20" id="titleTrailing"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Campus Companion" id="welcomeNavigationItem"/>
+                    <connections>
+                        <outlet property="campusImageView" destination="campusImageView" id="imageOutlet"/>
+                        <outlet property="eventDatePicker" destination="eventDatePicker" id="dateOutlet"/>
+                        <outlet property="guestsLabel" destination="guestsLabel" id="guestsLabelOutlet"/>
+                        <outlet property="guestsStepper" destination="guestsStepper" id="stepperOutlet"/>
+                        <outlet property="nameTextField" destination="nameTextField" id="nameOutlet"/>
+                        <outlet property="notifySwitch" destination="notifySwitch" id="switchOutlet"/>
+                        <outlet property="roleSegmentedControl" destination="roleSegmentedControl" id="roleOutlet"/>
+                        <outlet property="subtitleLabel" destination="subtitleLabel" id="subtitleOutlet"/>
+                        <outlet property="titleLabel" destination="titleLabel" id="titleOutlet"/>
+                        <segue destination="detailController" kind="show" identifier="ShowDetailSegue" id="detailSegue"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="welcomeResponder" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--Campus Announcements-->
+        <scene sceneID="announcementsScene">
+            <objects>
+                <tableViewController id="announcementsController" customClass="AnnouncementsViewController" customModule="CampusCompanion" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="92" estimatedRowHeight="92" sectionHeaderHeight="28" sectionFooterHeight="28" id="announcementsTable">
+                        <rect key="frame" x="0" y="0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AnnouncementCell" rowHeight="92" id="announcementCell" customClass="AnnouncementCell" customModule="CampusCompanion" customModuleProvider="target">
+                                <rect key="frame" x="0" y="50" width="393" height="92"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="announcementCell" id="announcementContent">
+                                    <rect key="frame" x="0" y="0" width="366" height="92"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="categoryIcon">
+                                            <rect key="frame" x="16" y="30" width="32" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="32" id="iconWidth"/>
+                                                <constraint firstAttribute="height" constant="32" id="iconHeight"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" text="Announcement title" numberOfLines="0" translatesAutoresizingMaskIntoConstraints="NO" id="announcementTitle">
+                                            <rect key="frame" x="64" y="16" width="286" height="21"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        </label>
+                                        <label opaque="NO" text="Category • Date" numberOfLines="0" translatesAutoresizingMaskIntoConstraints="NO" id="announcementDate">
+                                            <rect key="frame" x="64" y="43" width="286" height="33"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" systemColor="secondaryLabelColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="categoryIcon" firstAttribute="leading" secondItem="announcementContent" secondAttribute="leading" constant="16" id="iconLeading"/>
+                                        <constraint firstItem="categoryIcon" firstAttribute="centerY" secondItem="announcementContent" secondAttribute="centerY" id="iconCenter"/>
+                                        <constraint firstItem="announcementTitle" firstAttribute="leading" secondItem="categoryIcon" secondAttribute="trailing" constant="16" id="cellTitleLeading"/>
+                                        <constraint firstItem="announcementTitle" firstAttribute="top" secondItem="announcementContent" secondAttribute="top" constant="16" id="cellTitleTop"/>
+                                        <constraint firstAttribute="trailing" secondItem="announcementTitle" secondAttribute="trailing" constant="16" id="cellTitleTrailing"/>
+                                        <constraint firstItem="announcementDate" firstAttribute="leading" secondItem="announcementTitle" secondAttribute="leading" id="cellDateLeading"/>
+                                        <constraint firstItem="announcementDate" firstAttribute="top" secondItem="announcementTitle" secondAttribute="bottom" constant="6" id="cellDateTop"/>
+                                        <constraint firstAttribute="trailing" secondItem="announcementDate" secondAttribute="trailing" constant="16" id="cellDateTrailing"/>
+                                        <constraint firstAttribute="bottom" secondItem="announcementDate" secondAttribute="bottom" constant="16" id="cellDateBottom"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="categoryIconImageView" destination="categoryIcon" id="cellIconOutlet"/>
+                                    <outlet property="titleLabel" destination="announcementTitle" id="cellTitleOutlet"/>
+                                    <outlet property="dateLabel" destination="announcementDate" id="cellDateOutlet"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="announcementsController" id="announcementsDataSource"/>
+                            <outlet property="delegate" destination="announcementsController" id="announcementsDelegate"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Campus Announcements" id="announcementsNavigation"/>
+                    <connections>
+                        <segue destination="detailController" kind="show" identifier="ShowAnnouncementDetailSegue" id="announcementDetailSegue"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="announcementsResponder" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="900" y="800"/>
+        </scene>
+        <!--Campus Events-->
+        <scene sceneID="detailScene">
+            <objects>
+                <viewController id="detailController" customClass="DetailViewController" customModule="CampusCompanion" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="detailView">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Campus Events" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" translatesAutoresizingMaskIntoConstraints="NO" id="messageLabel">
+                                <rect key="frame" x="32" y="466.66666666666669" width="329" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="detailSafeArea"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="messageLabel" firstAttribute="centerY" secondItem="detailSafeArea" secondAttribute="centerY" id="messageCenterY"/>
+                            <constraint firstItem="messageLabel" firstAttribute="leading" secondItem="detailSafeArea" secondAttribute="leading" constant="32" id="messageLeading"/>
+                            <constraint firstItem="detailSafeArea" firstAttribute="trailing" secondItem="messageLabel" secondAttribute="trailing" constant="32" id="messageTrailing"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Campus Events" id="detailNavigationItem"/>
+                    <connections>
+                        <outlet property="messageLabel" destination="messageLabel" id="messageOutlet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="detailResponder" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="900" y="0.0"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="GraduationLogo" width="2048" height="2048"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.53333333329999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

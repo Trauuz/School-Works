@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NAV-01-main">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="SCN-01-navigation">
+            <objects>
+                <navigationController id="NAV-01-main" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BAR-01-navigation">
+                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="VC0-01-main" kind="relationship" relationship="rootViewController" id="SEG-01-root"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RES-01-navigation" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-770" y="108"/>
+        </scene>
+        <!--Campus Companion-->
+        <scene sceneID="SCN-01-main">
+            <objects>
+                <viewController id="VC0-01-main" customClass="ViewController" customModule="CampusCompanion" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VIE-01-root">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SCR-01-main">
+                                <rect key="frame" x="0.0" y="172" width="393" height="612"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CNT-01-main">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="753"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Campus Companion" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="LBL-01-title">
+                                                <rect key="frame" x="64" y="24" width="265.33333333333331" height="34"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="titleLabel"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Campus, In Your Pocket" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="LBL-02-subtitle">
+                                                <rect key="frame" x="92.000000000000014" y="66" width="209.33333333333337" height="19"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="subtitleLabel"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="building.columns.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="IMG-01-campus">
+                                                <rect key="frame" x="121.66666666666669" y="109.33333333333333" width="150" height="149.66666666666669"/>
+                                                <color key="tintColor" red="0.0" green="0.3921568627" blue="0.23137254900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="campusImageView"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BTN-01-start">
+                                                <rect key="frame" x="156.66666666666666" y="283" width="80" height="34"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="getStartedButton"/>
+                                                <state key="normal" title="Get Started"/>
+                                                <connections>
+                                                    <action selector="getStartedTapped:" destination="VC0-01-main" eventType="touchUpInside" id="ACT-01-start"/>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TXT-01-name">
+                                                <rect key="frame" x="32" y="341" width="329" height="34"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="nameTextField"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notify me about events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="LBL-03-notify">
+                                                <rect key="frame" x="32" y="391" width="160" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SWT-01-notify">
+                                                <rect key="frame" x="300" y="386" width="63" height="28"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="notifySwitch"/>
+                                            </switch>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SEG-01-role">
+                                                <rect key="frame" x="32" y="430" width="329" height="33"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="roleSegmentedControl"/>
+                                                <segments>
+                                                    <segment title="Student"/>
+                                                    <segment title="Faculty"/>
+                                                </segments>
+                                            </segmentedControl>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preferred Event Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="LBL-04-date">
+                                                <rect key="frame" x="32" y="478" width="143" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="DTP-01-event">
+                                                <rect key="frame" x="223" y="470" width="138" height="34"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="eventDatePicker"/>
+                                            </datePicker>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Guests: 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="LBL-05-guests">
+                                                <rect key="frame" x="32" y="516" width="140" height="18"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="guestCountLabel"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stepper opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="STP-01-guests">
+                                                <rect key="frame" x="267" y="509" width="94" height="32"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="guestStepper"/>
+                                                <connections>
+                                                    <action selector="guestStepperChanged:" destination="VC0-01-main" eventType="valueChanged" id="ACT-02-stepper"/>
+                                                </connections>
+                                            </stepper>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BTN-02-explore">
+                                                <rect key="frame" x="140.66666666666666" y="565" width="112" height="44"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="exploreCampusButton"/>
+                                                <state key="normal" title="Explore Campus"/>
+                                                <connections>
+                                                    <action selector="exploreButtonTapped:" destination="VC0-01-main" eventType="touchUpInside" id="ACT-03-explore"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BTN-03-announcements">
+                                                <rect key="frame" x="110.66666666666669" y="625" width="172" height="44"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="campusAnnouncementsButton"/>
+                                                <state key="normal" title="Campus Announcements"/>
+                                                <connections>
+                                                    <segue destination="VC-03-announcements" kind="show" id="SEG-03-announcements"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BTN-04-reset">
+                                                <rect key="frame" x="121.5" y="685" width="150" height="44"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="resetPreferencesButton"/>
+                                                <state key="normal" title="Reset Preferences"/>
+                                                <connections>
+                                                    <action selector="resetPreferencesTapped:" destination="VC0-01-main" eventType="touchUpInside" id="ACT-04-reset"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="BTN-03-announcements" firstAttribute="centerX" secondItem="CNT-01-main" secondAttribute="centerX" id="CON-announcements-center"/>
+                                            <constraint firstItem="BTN-03-announcements" firstAttribute="height" constant="44" id="CON-announcements-height"/>
+                                            <constraint firstItem="BTN-03-announcements" firstAttribute="top" secondItem="BTN-02-explore" secondAttribute="bottom" constant="16" id="CON-announcements-top"/>
+                                            <constraint firstAttribute="bottom" secondItem="BTN-04-reset" secondAttribute="bottom" constant="24" id="CON-content-bottom"/>
+                                            <constraint firstItem="BTN-04-reset" firstAttribute="top" secondItem="BTN-03-announcements" secondAttribute="bottom" constant="16" id="CON-reset-top"/>
+                                            <constraint firstItem="BTN-04-reset" firstAttribute="centerX" secondItem="CNT-01-main" secondAttribute="centerX" id="CON-reset-center"/>
+                                            <constraint firstItem="BTN-04-reset" firstAttribute="height" constant="44" id="CON-reset-height"/>
+                                            <constraint firstItem="LBL-04-date" firstAttribute="leading" secondItem="CNT-01-main" secondAttribute="leading" constant="32" id="CON-date-leading"/>
+                                            <constraint firstItem="DTP-01-event" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LBL-04-date" secondAttribute="trailing" constant="8" id="CON-date-spacing"/>
+                                            <constraint firstItem="LBL-04-date" firstAttribute="top" secondItem="SEG-01-role" secondAttribute="bottom" constant="16" id="CON-date-top"/>
+                                            <constraint firstItem="BTN-02-explore" firstAttribute="centerX" secondItem="CNT-01-main" secondAttribute="centerX" id="CON-explore-center"/>
+                                            <constraint firstItem="BTN-02-explore" firstAttribute="height" constant="44" id="CON-explore-height"/>
+                                            <constraint firstItem="BTN-02-explore" firstAttribute="top" secondItem="STP-01-guests" secondAttribute="bottom" constant="24" id="CON-explore-top"/>
+                                            <constraint firstItem="LBL-05-guests" firstAttribute="leading" secondItem="CNT-01-main" secondAttribute="leading" constant="32" id="CON-guests-leading"/>
+                                            <constraint firstItem="STP-01-guests" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LBL-05-guests" secondAttribute="trailing" constant="8" id="CON-guests-spacing"/>
+                                            <constraint firstItem="LBL-05-guests" firstAttribute="top" secondItem="LBL-04-date" secondAttribute="bottom" constant="20" id="CON-guests-top"/>
+                                            <constraint firstItem="IMG-01-campus" firstAttribute="centerX" secondItem="CNT-01-main" secondAttribute="centerX" id="CON-image-center"/>
+                                            <constraint firstItem="IMG-01-campus" firstAttribute="height" constant="150" id="CON-image-height"/>
+                                            <constraint firstItem="IMG-01-campus" firstAttribute="top" secondItem="LBL-02-subtitle" secondAttribute="bottom" constant="24" id="CON-image-top"/>
+                                            <constraint firstItem="IMG-01-campus" firstAttribute="width" constant="150" id="CON-image-width"/>
+                                            <constraint firstItem="TXT-01-name" firstAttribute="centerX" secondItem="CNT-01-main" secondAttribute="centerX" id="CON-name-center"/>
+                                            <constraint firstItem="TXT-01-name" firstAttribute="height" constant="34" id="CON-name-height"/>
+                                            <constraint firstItem="TXT-01-name" firstAttribute="top" secondItem="BTN-01-start" secondAttribute="bottom" constant="24" id="CON-name-top"/>
+                                            <constraint firstItem="TXT-01-name" firstAttribute="width" secondItem="CNT-01-main" secondAttribute="width" constant="-64" id="CON-name-width"/>
+                                            <constraint firstItem="LBL-03-notify" firstAttribute="leading" secondItem="CNT-01-main" secondAttribute="leading" constant="32" id="CON-notify-leading"/>
+                                            <constraint firstItem="SWT-01-notify" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LBL-03-notify" secondAttribute="trailing" constant="8" id="CON-notify-spacing"/>
+                                            <constraint firstItem="LBL-03-notify" firstAttribute="top" secondItem="TXT-01-name" secondAttribute="bottom" constant="16" id="CON-notify-top"/>
+                                            <constraint firstItem="DTP-01-event" firstAttribute="centerY" secondItem="LBL-04-date" secondAttribute="centerY" id="CON-picker-center"/>
+                                            <constraint firstItem="DTP-01-event" firstAttribute="height" constant="34" id="CON-picker-height"/>
+                                            <constraint firstAttribute="trailing" secondItem="DTP-01-event" secondAttribute="trailing" constant="32" id="CON-picker-trailing"/>
+                                            <constraint firstItem="DTP-01-event" firstAttribute="width" constant="138" id="CON-picker-width"/>
+                                            <constraint firstItem="SEG-01-role" firstAttribute="centerX" secondItem="CNT-01-main" secondAttribute="centerX" id="CON-role-center"/>
+                                            <constraint firstItem="SEG-01-role" firstAttribute="height" constant="32" id="CON-role-height"/>
+                                            <constraint firstItem="SEG-01-role" firstAttribute="top" secondItem="SWT-01-notify" secondAttribute="bottom" constant="16" id="CON-role-top"/>
+                                            <constraint firstItem="SEG-01-role" firstAttribute="width" secondItem="CNT-01-main" secondAttribute="width" constant="-64" id="CON-role-width"/>
+                                            <constraint firstItem="BTN-01-start" firstAttribute="centerX" secondItem="CNT-01-main" secondAttribute="centerX" id="CON-start-center"/>
+                                            <constraint firstItem="BTN-01-start" firstAttribute="height" constant="34" id="CON-start-height"/>
+                                            <constraint firstItem="BTN-01-start" firstAttribute="top" secondItem="IMG-01-campus" secondAttribute="bottom" constant="24" id="CON-start-top"/>
+                                            <constraint firstItem="STP-01-guests" firstAttribute="centerY" secondItem="LBL-05-guests" secondAttribute="centerY" id="CON-stepper-center"/>
+                                            <constraint firstAttribute="trailing" secondItem="STP-01-guests" secondAttribute="trailing" constant="32" id="CON-stepper-trailing"/>
+                                            <constraint firstItem="LBL-02-subtitle" firstAttribute="centerX" secondItem="CNT-01-main" secondAttribute="centerX" id="CON-subtitle-center"/>
+                                            <constraint firstItem="LBL-02-subtitle" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CNT-01-main" secondAttribute="leading" constant="20" id="CON-subtitle-leading"/>
+                                            <constraint firstItem="LBL-02-subtitle" firstAttribute="top" secondItem="LBL-01-title" secondAttribute="bottom" constant="8" id="CON-subtitle-top"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="LBL-02-subtitle" secondAttribute="trailing" constant="20" id="CON-subtitle-trailing"/>
+                                            <constraint firstItem="SWT-01-notify" firstAttribute="centerY" secondItem="LBL-03-notify" secondAttribute="centerY" id="CON-switch-center"/>
+                                            <constraint firstAttribute="trailing" secondItem="SWT-01-notify" secondAttribute="trailing" constant="32" id="CON-switch-trailing"/>
+                                            <constraint firstItem="LBL-01-title" firstAttribute="centerX" secondItem="CNT-01-main" secondAttribute="centerX" id="CON-title-center"/>
+                                            <constraint firstItem="LBL-01-title" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CNT-01-main" secondAttribute="leading" constant="20" id="CON-title-leading"/>
+                                            <constraint firstItem="LBL-01-title" firstAttribute="top" secondItem="CNT-01-main" secondAttribute="top" constant="24" id="CON-title-top"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="LBL-01-title" secondAttribute="trailing" constant="20" id="CON-title-trailing"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="CLG-01-main" firstAttribute="bottom" secondItem="CNT-01-main" secondAttribute="bottom" id="CON-content-layout-bottom"/>
+                                    <constraint firstItem="CNT-01-main" firstAttribute="leading" secondItem="CLG-01-main" secondAttribute="leading" id="CON-content-leading"/>
+                                    <constraint firstItem="CNT-01-main" firstAttribute="top" secondItem="CLG-01-main" secondAttribute="top" id="CON-content-top"/>
+                                    <constraint firstItem="CLG-01-main" firstAttribute="trailing" secondItem="CNT-01-main" secondAttribute="trailing" id="CON-content-trailing"/>
+                                    <constraint firstItem="CNT-01-main" firstAttribute="width" secondItem="FLG-01-main" secondAttribute="width" id="CON-content-width"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="CLG-01-main"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="FLG-01-main"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SAF-01-main"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SAF-01-main" firstAttribute="bottom" secondItem="SCR-01-main" secondAttribute="bottom" id="CON-scroll-bottom"/>
+                            <constraint firstItem="SCR-01-main" firstAttribute="leading" secondItem="SAF-01-main" secondAttribute="leading" id="CON-scroll-leading"/>
+                            <constraint firstItem="SCR-01-main" firstAttribute="top" secondItem="SAF-01-main" secondAttribute="top" id="CON-scroll-top"/>
+                            <constraint firstItem="SAF-01-main" firstAttribute="trailing" secondItem="SCR-01-main" secondAttribute="trailing" id="CON-scroll-trailing"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Campus Companion" id="NAVITEM-01-main"/>
+                    <connections>
+                        <outlet property="eventDatePicker" destination="DTP-01-event" id="OUT-05-date"/>
+                        <outlet property="guestCountLabel" destination="LBL-05-guests" id="OUT-06-count"/>
+                        <outlet property="guestStepper" destination="STP-01-guests" id="OUT-07-stepper"/>
+                        <outlet property="nameTextField" destination="TXT-01-name" id="OUT-03-name"/>
+                        <outlet property="notifySwitch" destination="SWT-01-notify" id="OUT-04-notify"/>
+                        <outlet property="roleSegmentedControl" destination="SEG-01-role" id="OUT-05-role"/>
+                        <outlet property="subtitleLabel" destination="LBL-02-subtitle" id="OUT-02-subtitle"/>
+                        <outlet property="titleLabel" destination="LBL-01-title" id="OUT-01-title"/>
+                        <segue destination="VC-02-detail" kind="show" identifier="ShowDetailSegue" id="SEG-02-detail"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RES-01-first" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="128" y="108"/>
+        </scene>
+        <!--Campus Announcements-->
+        <scene sceneID="SCN-03-announcements">
+            <objects>
+                <tableViewController id="VC-03-announcements" customClass="AnnouncementsViewController" customModule="CampusCompanion" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="TBL-01-announcements">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AnnouncementCell" rowHeight="100" id="CEL-01-announcement" customClass="AnnouncementCell" customModule="CampusCompanion" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="393" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="CVC-01-announcement">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="megaphone.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="IMG-02-category">
+                                            <rect key="frame" x="16" y="22.333333333333329" width="32" height="31.666666666666671"/>
+                                            <color key="tintColor" systemColor="systemGreenColor"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="categoryIconImageView"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Announcement Title" textAlignment="natural" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LBL-07-announcement-title">
+                                            <rect key="frame" x="60" y="12" width="317" height="20"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="announcementTitleLabel"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category • Date&#10;Location: Campus&#10;Priority Level: Normal" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" translatesAutoresizingMaskIntoConstraints="NO" id="LBL-08-announcement-date">
+                                            <rect key="frame" x="60" y="36" width="317" height="47"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="announcementDateLabel"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" systemColor="secondaryLabelColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="LBL-08-announcement-date" secondAttribute="bottom" constant="10" id="CON-cell-date-bottom"/>
+                                        <constraint firstItem="LBL-08-announcement-date" firstAttribute="leading" secondItem="LBL-07-announcement-title" secondAttribute="leading" id="CON-cell-date-leading"/>
+                                        <constraint firstItem="LBL-08-announcement-date" firstAttribute="top" secondItem="LBL-07-announcement-title" secondAttribute="bottom" constant="4" id="CON-cell-date-top"/>
+                                        <constraint firstAttribute="trailing" secondItem="LBL-08-announcement-date" secondAttribute="trailing" constant="16" id="CON-cell-date-trailing"/>
+                                        <constraint firstItem="IMG-02-category" firstAttribute="centerY" secondItem="CVC-01-announcement" secondAttribute="centerY" id="CON-cell-icon-center"/>
+                                        <constraint firstItem="IMG-02-category" firstAttribute="height" constant="32" id="CON-cell-icon-height"/>
+                                        <constraint firstItem="IMG-02-category" firstAttribute="leading" secondItem="CVC-01-announcement" secondAttribute="leading" constant="16" id="CON-cell-icon-leading"/>
+                                        <constraint firstItem="IMG-02-category" firstAttribute="width" constant="32" id="CON-cell-icon-width"/>
+                                        <constraint firstItem="LBL-07-announcement-title" firstAttribute="leading" secondItem="IMG-02-category" secondAttribute="trailing" constant="12" id="CON-cell-title-leading"/>
+                                        <constraint firstItem="LBL-07-announcement-title" firstAttribute="top" secondItem="CVC-01-announcement" secondAttribute="top" constant="12" id="CON-cell-title-top"/>
+                                        <constraint firstAttribute="trailing" secondItem="LBL-07-announcement-title" secondAttribute="trailing" constant="16" id="CON-cell-title-trailing"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="categoryIconImageView" destination="IMG-02-category" id="OUT-09-category-icon"/>
+                                    <outlet property="dateLabel" destination="LBL-08-announcement-date" id="OUT-11-announcement-date"/>
+                                    <outlet property="titleLabel" destination="LBL-07-announcement-title" id="OUT-10-announcement-title"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="VC-03-announcements" id="OUT-12-announcements-data"/>
+                            <outlet property="delegate" destination="VC-03-announcements" id="OUT-13-announcements-delegate"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Campus Announcements" id="NAVITEM-03-announcements">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="BAR-02-add">
+                                <connections>
+                                    <action selector="addAnnouncementTapped:" destination="VC-03-announcements" id="ACT-05-add"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="refresh" id="BAR-03-refresh">
+                                <connections>
+                                    <action selector="refreshTapped:" destination="VC-03-announcements" id="ACT-06-refresh"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="VC-02-detail" kind="show" identifier="ShowAnnouncementDetailSegue" id="SEG-04-announcement-detail"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RES-03-first" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1030" y="972"/>
+        </scene>
+        <!--Campus Events-->
+        <scene sceneID="SCN-02-detail">
+            <objects>
+                <viewController id="VC-02-detail" customClass="DetailViewController" customModule="CampusCompanion" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VIE-02-detail">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Campus Events" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="LBL-06-message">
+                                <rect key="frame" x="32" y="468" width="329" height="20.333333333333314"/>
+                                <accessibility key="accessibilityConfiguration" identifier="messageLabel"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SAF-02-detail"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="LBL-06-message" firstAttribute="centerY" secondItem="SAF-02-detail" secondAttribute="centerY" id="CON-message-center"/>
+                            <constraint firstItem="LBL-06-message" firstAttribute="centerX" secondItem="SAF-02-detail" secondAttribute="centerX" id="CON-message-center-x"/>
+                            <constraint firstItem="LBL-06-message" firstAttribute="width" secondItem="SAF-02-detail" secondAttribute="width" constant="-64" id="CON-message-width"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Campus Events" id="NAVITEM-02-detail"/>
+                    <connections>
+                        <outlet property="messageLabel" destination="LBL-06-message" id="OUT-08-message"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RES-02-first" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1034" y="108"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="SEG-04-announcement-detail"/>
+    </inferredMetricsTieBreakers>
+    <resources>
+        <image name="building.columns.fill" catalog="system" width="128" height="112"/>
+        <image name="megaphone.fill" catalog="system" width="128" height="112"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
