@@ -1,0 +1,1387 @@
+{
+ "url": "http://127.0.0.1:8000/tasks",
+ "at": "2026-10-21T02:23:19.224Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 1,
+   "filled": [
+    0.4
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 900,
+     "screens": 1,
+     "words": 72,
+     "img": 0,
+     "video": 0,
+     "canvas": 0,
+     "svg": 0,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Tasks",
+     "words": 1,
+     "chars": 5,
+     "lines": 1,
+     "size": 24,
+     "vw": 1.7,
+     "font": "Geist",
+     "weight": 500,
+     "tracking": -0.02,
+     "leading": 1.2,
+     "top": 34,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "Tasks",
+     "words": 1,
+     "lines": 1,
+     "size": 24,
+     "font": "Geist"
+    },
+    "headings": [
+     {
+      "text": "0%",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 30,
+      "vw": 2.1,
+      "font": "Geist",
+      "weight": 500,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.02,
+      "top": 135,
+      "tag": "strong",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Geist",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      20,
+      24,
+      30
+     ],
+     "sizeCount": 8,
+     "notLoaded": [],
+     "body": null,
+     "measureChars": null,
+     "max": {
+      "size": 30,
+      "vw": 2.1,
+      "font": "Geist",
+      "text": "0"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.04,
+     "centerShare": 0.05,
+     "smallText": 2
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f2f4f7",
+     "bodyBgHsl": {
+      "h": 216,
+      "s": 0.24,
+      "l": 0.96
+     },
+     "dark": false,
+     "sectionBgs": [],
+     "textColors": [
+      {
+       "color": "#62676e",
+       "share": 0.58
+      },
+      {
+       "color": "#0a0a0a",
+       "share": 0.34
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.05
+      },
+      {
+       "color": "#41464c",
+       "share": 0.03
+      }
+     ],
+     "button": {
+      "bg": "#141414",
+      "hsl": {
+       "h": 0,
+       "s": 0,
+       "l": 0.08
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 3,
+     "radius": 6,
+     "height": 38,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Tasks",
+      "Add a task",
+      "Save task"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 4,
+     "hairlineSamples": [
+      "aside#app-navigation.sidebar 244px",
+      "dl.task-counts 1079px",
+      "div.panel-heading 727px",
+      "article.task-row 727px"
+     ],
+     "outlinedBoxes": 3,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 4,
+     "boxRadius": 8,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 1,
+     "fixed": true,
+     "height": 900,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "geist"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 900,
+    "margins": {
+     "left": 28,
+     "right": 79
+    },
+    "sections": [
+     {
+      "sel": "section.progress-panel",
+      "tag": "section",
+      "top": 112,
+      "height": 198,
+      "words": 11,
+      "media": 0,
+      "middle": 299,
+      "heading": {
+       "text": "Coursework progress",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 327,
+      "right": 367,
+      "textLeft": 327,
+      "textRight": 367,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "div.work-grid",
+      "tag": "div",
+      "top": 322,
+      "height": 427,
+      "words": 37,
+      "media": 0,
+      "middle": 318,
+      "heading": {
+       "text": "Saved tasks",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 323,
+      "right": 79,
+      "textLeft": 323,
+      "textRight": 79,
+      "fullBleed": false,
+      "footer": true,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Tasks",
+      "size": 24,
+      "top": 34,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 323,
+      "n": 2
+     },
+     {
+      "x": 302,
+      "n": 1
+     },
+     {
+      "x": 347,
+      "n": 1
+     },
+     {
+      "x": 1063,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 5,
+    "bodySize": 14,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0.29,
+    "voidBox": {
+     "x": 120,
+     "y": 480,
+     "w": 900,
+     "h": 420
+    }
+   },
+   "app": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "dark": false,
+    "ground": "#f2f4f7",
+    "sidebar": {
+     "w": 244,
+     "tag": "aside",
+     "links": 4,
+     "share": 0.17
+    },
+    "topbar": null,
+    "canvas": {
+     "left": 58,
+     "right": 74
+    },
+    "hero": {
+     "text": "Tasks",
+     "words": 1,
+     "chars": 5,
+     "lines": 1,
+     "size": 24,
+     "vw": 1.7,
+     "font": "Geist",
+     "weight": 500,
+     "tracking": -0.02,
+     "leading": 1.2,
+     "top": 34,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 3,
+     "firstScreen": 3,
+     "ragged": [
+      {
+       "diff": 266,
+       "top": 322
+      }
+     ],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 4,
+     "radii": [
+      [
+       8,
+       3
+      ],
+      [
+       0,
+       1
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 0,
+     "softShadows": 0,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 0,
+     "tabularShare": null,
+     "kpiMax": null
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.15,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      24
+     ]
+    },
+    "title": {
+     "text": "Tasks",
+     "size": 24,
+     "top": 34
+    },
+    "colourShare": 0
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 1,
+   "filled": [
+    0.82
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 1024,
+     "screens": 1,
+     "words": 76,
+     "img": 0,
+     "video": 0,
+     "canvas": 0,
+     "svg": 0,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Tasks",
+     "words": 1,
+     "chars": 5,
+     "lines": 1,
+     "size": 24,
+     "vw": 3.1,
+     "font": "Geist",
+     "weight": 500,
+     "tracking": -0.02,
+     "leading": 1.2,
+     "top": 72,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "Tasks",
+     "words": 1,
+     "lines": 1,
+     "size": 24,
+     "font": "Geist"
+    },
+    "headings": [
+     {
+      "text": "0%",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 30,
+      "vw": 3.9,
+      "font": "Geist",
+      "weight": 500,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.04,
+      "top": 173,
+      "tag": "strong",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Geist",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      20,
+      24,
+      30
+     ],
+     "sizeCount": 8,
+     "notLoaded": [],
+     "body": null,
+     "measureChars": null,
+     "max": {
+      "size": 30,
+      "vw": 3.9,
+      "font": "Geist",
+      "text": "0"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.04,
+     "centerShare": 0.06,
+     "smallText": 2
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f2f4f7",
+     "bodyBgHsl": {
+      "h": 216,
+      "s": 0.24,
+      "l": 0.96
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#f2f4f7",
+       "top": 48,
+       "hsl": {
+        "h": 216,
+        "s": 0.24,
+        "l": 0.96
+       }
+      },
+      {
+       "color": "#ffffff",
+       "top": 532,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#62676e",
+       "share": 0.57
+      },
+      {
+       "color": "#0a0a0a",
+       "share": 0.35
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.05
+      },
+      {
+       "color": "#41464c",
+       "share": 0.03
+      }
+     ],
+     "button": {
+      "bg": "#141414",
+      "hsl": {
+       "h": 0,
+       "s": 0,
+       "l": 0.08
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 3,
+     "radius": 6,
+     "height": 38,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Tasks",
+      "Add a task",
+      "Save task"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 5,
+     "hairlineSamples": [
+      "div.sidebar-note 732px",
+      "header.mobile-bar 768px",
+      "dl.task-counts 726px",
+      "div.panel-heading 726px",
+      "article.task-row 726px"
+     ],
+     "outlinedBoxes": 3,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 4,
+     "boxRadius": 8,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 0,
+     "fixed": true,
+     "height": 976,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "geist"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 1024,
+    "margins": {
+     "left": 20,
+     "right": 36
+    },
+    "sections": [
+     {
+      "sel": "section.progress-panel",
+      "tag": "section",
+      "top": 150,
+      "height": 198,
+      "words": 11,
+      "media": 0,
+      "middle": 182,
+      "heading": {
+       "text": "Coursework progress",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 45,
+      "right": 212,
+      "textLeft": 45,
+      "textRight": 212,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "div.work-grid",
+      "tag": "div",
+      "top": 360,
+      "height": 579,
+      "words": 37,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Saved tasks",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 41,
+      "right": 41,
+      "textLeft": 41,
+      "textRight": 41,
+      "fullBleed": false,
+      "footer": true,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Tasks",
+      "size": 24,
+      "top": 72,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 41,
+      "n": 3
+     },
+     {
+      "x": 20,
+      "n": 1
+     },
+     {
+      "x": 65,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 5,
+    "bodySize": 14,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "dark": false,
+    "ground": "#f2f4f7",
+    "sidebar": null,
+    "topbar": {
+     "h": 48
+    },
+    "canvas": {
+     "left": 5,
+     "right": 16
+    },
+    "hero": {
+     "text": "Tasks",
+     "words": 1,
+     "chars": 5,
+     "lines": 1,
+     "size": 24,
+     "vw": 3.1,
+     "font": "Geist",
+     "weight": 500,
+     "tracking": -0.02,
+     "leading": 1.2,
+     "top": 72,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 3,
+     "firstScreen": 3,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 4,
+     "radii": [
+      [
+       8,
+       3
+      ],
+      [
+       0,
+       1
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 0,
+     "softShadows": 0,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 0,
+     "tabularShare": null,
+     "kpiMax": null
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.15,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      24
+     ]
+    },
+    "title": {
+     "text": "Tasks",
+     "size": 24,
+     "top": 72
+    },
+    "colourShare": 0
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 2,
+   "filled": [
+    0.81,
+    0.8
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 1043,
+     "screens": 1.2,
+     "words": 73,
+     "img": 0,
+     "video": 0,
+     "canvas": 0,
+     "svg": 0,
+     "sections": 3,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Tasks",
+     "words": 1,
+     "chars": 5,
+     "lines": 1,
+     "size": 22,
+     "vw": 5.6,
+     "font": "Geist",
+     "weight": 500,
+     "tracking": -0.02,
+     "leading": 1.2,
+     "top": 72,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "Tasks",
+     "words": 1,
+     "lines": 1,
+     "size": 22,
+     "font": "Geist"
+    },
+    "headings": [
+     {
+      "text": "Tasks",
+      "words": 1,
+      "chars": 5,
+      "lines": 1,
+      "size": 22,
+      "vw": 5.6,
+      "font": "Geist",
+      "weight": 500,
+      "tracking": -0.025,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.5,
+      "top": 72,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "0%",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 30,
+      "vw": 7.7,
+      "font": "Geist",
+      "weight": 500,
+      "tracking": -0.04,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.08,
+      "top": 160,
+      "tag": "strong",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 2,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Geist",
+       "share": 1,
+       "mono": false
+      }
+     ],
+     "familyCount": 1,
+     "sizes": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      20,
+      22,
+      30
+     ],
+     "sizeCount": 8,
+     "notLoaded": [],
+     "body": null,
+     "measureChars": null,
+     "max": {
+      "size": 30,
+      "vw": 7.7,
+      "font": "Geist",
+      "text": "0"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.04,
+     "centerShare": 0.06,
+     "smallText": 2
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f2f4f7",
+     "bodyBgHsl": {
+      "h": 216,
+      "s": 0.24,
+      "l": 0.96
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#f2f4f7",
+       "top": 48,
+       "hsl": {
+        "h": 216,
+        "s": 0.24,
+        "l": 0.96
+       }
+      },
+      {
+       "color": "#ffffff",
+       "top": 593,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#62676e",
+       "share": 0.59
+      },
+      {
+       "color": "#0a0a0a",
+       "share": 0.36
+      },
+      {
+       "color": "#41464c",
+       "share": 0.03
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#e5e8ec",
+      "hsl": {
+       "h": 214,
+       "s": 0.16,
+       "l": 0.91
+      },
+      "fg": "#0a0a0a"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 2,
+     "radius": 6,
+     "height": 34,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Tasks",
+      "All"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 5,
+     "hairlineSamples": [
+      "div.sidebar-note 354px",
+      "header.mobile-bar 390px",
+      "dl.task-counts 356px",
+      "div.panel-heading 356px",
+      "article.task-row 356px"
+     ],
+     "outlinedBoxes": 3,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 4,
+     "boxRadius": 8,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 0,
+     "fixed": true,
+     "height": 796,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "geist"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 1043,
+    "margins": {
+     "left": 16,
+     "right": 33
+    },
+    "sections": [
+     {
+      "sel": "section.progress-panel",
+      "tag": "section",
+      "top": 141,
+      "height": 190,
+      "words": 11,
+      "media": 0,
+      "middle": 52,
+      "heading": {
+       "text": "Coursework progress",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 33,
+      "right": 92,
+      "textLeft": 33,
+      "textRight": 92,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "div.work-grid",
+      "tag": "div",
+      "top": 343,
+      "height": 652,
+      "words": 37,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Saved tasks",
+       "size": 16,
+       "tag": "h2"
+      },
+      "left": 33,
+      "right": 33,
+      "textLeft": 33,
+      "textRight": 33,
+      "fullBleed": false,
+      "footer": true,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Tasks",
+      "size": 22,
+      "top": 72,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 33,
+      "n": 3
+     },
+     {
+      "x": 16,
+      "n": 1
+     },
+     {
+      "x": 57,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 5,
+    "bodySize": 14,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "dark": false,
+    "ground": "#f2f4f7",
+    "sidebar": null,
+    "topbar": {
+     "h": 48
+    },
+    "canvas": {
+     "left": 5,
+     "right": 16
+    },
+    "hero": {
+     "text": "Tasks",
+     "words": 1,
+     "chars": 5,
+     "lines": 1,
+     "size": 22,
+     "vw": 5.6,
+     "font": "Geist",
+     "weight": 500,
+     "tracking": -0.02,
+     "leading": 1.2,
+     "top": 72,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 3,
+     "firstScreen": 3,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 4,
+     "radii": [
+      [
+       8,
+       3
+      ],
+      [
+       0,
+       1
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 0,
+     "softShadows": 0,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 0,
+     "tabularShare": null,
+     "kpiMax": null
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.15,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      22
+     ]
+    },
+    "title": {
+     "text": "Tasks",
+     "size": 22,
+     "top": 72
+    },
+    "colourShare": 0
+   },
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "WARN",
+   "id": "hero-void",
+   "width": 1440,
+   "message": "29% of the first screen is one empty block (900×420px at 120,480).",
+   "fix": "Place the void on purpose or fill it: move the picture, the film or one fact into it, grow the headline to meet it, or shrink the screen to its content. A void reads as placed only when something closes it on the far side and it is the screen's one rest."
+  },
+  {
+   "level": "WARN",
+   "id": "ragged-row",
+   "width": 1440,
+   "message": "1 pair(s) of cards in one row end at different heights (by 266px).",
+   "fix": "Cards that share a row share a bottom edge: balance them by their content (the same number of rows, a block of similar height beside it), or stack them. In testing, ragged rows were marked down every time."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "D:\\GitHub\\School-Works\\Web System Technologies\\student_portal\\.taste-skill\\after\\desktop-fold.jpg",
+   "pages": [
+    "D:\\GitHub\\School-Works\\Web System Technologies\\student_portal\\.taste-skill\\after\\desktop-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "D:\\GitHub\\School-Works\\Web System Technologies\\student_portal\\.taste-skill\\after\\tablet-fold.jpg",
+   "pages": [
+    "D:\\GitHub\\School-Works\\Web System Technologies\\student_portal\\.taste-skill\\after\\tablet-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "D:\\GitHub\\School-Works\\Web System Technologies\\student_portal\\.taste-skill\\after\\mobile-fold.jpg",
+   "pages": [
+    "D:\\GitHub\\School-Works\\Web System Technologies\\student_portal\\.taste-skill\\after\\mobile-page-01.jpg"
+   ],
+   "film": []
+  }
+ ]
+}
