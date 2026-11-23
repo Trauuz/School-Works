@@ -1,0 +1,6 @@
+@extends('layouts.auth')
+@section('title', 'Correct your email · KaOrg')
+@section('content')<section class="login-panel"><h1>Correct your email</h1><p>Keep your username, {{ $pending['username'] }}, and restart signup with the right address. Re-enter and confirm your password.</p><form method="POST" action="{{ route('verification.correct') }}">@csrf
+<div class="field"><label for="email">Correct email</label><input id="email" name="email" type="email" autocomplete="email" value="{{ old('email', $pending['email']) }}" required></div>
+<div class="field"><label for="password">Password</label><input id="password" name="password" type="password" autocomplete="new-password" minlength="8" required></div>
+<div class="field"><label for="password_confirmation">Confirm password</label><input id="password_confirmation" name="password_confirmation" type="password" autocomplete="new-password" required></div><button class="submit-button">Restart signup</button></form><p><a class="text-link" href="{{ route('verification.notice') }}">Cancel</a></p></section>@endsection

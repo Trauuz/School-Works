@@ -46,7 +46,7 @@ class MembershipManager
             $this->require(! $member->deactivated_at, 'This member is deactivated.');
             $this->require($transaction->status === 'Pending' && ! $transaction->payment()->exists(), 'Only an unpaid Pending transaction can receive payment.');
             $this->require($amount > 0 && $amount === $transaction->fee, 'Payment must equal the full transaction fee.');
-            $payment = $transaction->payment()->create(['amount' => $amount, 'paid_at' => now()]);
+            $payment = Payment::updateOrCreate(['membership_transaction_id' => $transaction->id], ['amount' => $amount, 'paid_at' => now(), 'voided_at' => null]);
             $transaction->update(['status' => 'Paid']);
 
             return $payment;
@@ -80,6 +80,33 @@ class MembershipManager
             $transaction = MembershipTransaction::query()->lockForUpdate()->findOrFail($transaction->id);
             $this->require($transaction->status === 'Pending', 'Only Pending transactions can be cancelled.');
             $transaction->update(['status' => 'Cancelled']);
+        });
+    }
+
+    public function updateStatus(Member $member, bool $isPaid, bool $isActive): void
+    {
+        $this->require(! $isActive || $isPaid, 'Mark the membership as paid before making it active.');
+        DB::transaction(function () use ($member, $isPaid, $isActive): void {
+            $member = Member::query()->lockForUpdate()->findOrFail($member->id);
+            $transaction = $member->transactions()->latest('id')->lockForUpdate()->first();
+            $member->forceFill(['deactivated_at' => null])->save();
+            if (! $transaction || $transaction->status === 'Cancelled' || ($isActive && $transaction->status === 'Approved' && $transaction->expires_at?->lte(now()))) {
+                $transaction = $this->create($member, $member->membership_expires_at ? 'renewal' : 'application');
+            }
+            if ($isPaid) {
+                if (! $transaction->payment) {
+                    $this->pay($transaction, $transaction->fee);
+                    $transaction->refresh();
+                }
+                if ($isActive && $transaction->status === 'Paid') {
+                    $this->approve($transaction);
+                }
+            } else {
+                Payment::where('membership_transaction_id', $transaction->id)->whereNull('voided_at')->update(['voided_at' => now()]);
+                $transaction->update(['status' => 'Pending', 'starts_at' => null, 'expires_at' => null]);
+                $member->forceFill(['membership_starts_at' => null, 'membership_expires_at' => null])->save();
+            }
+            $member->forceFill(['deactivated_at' => $isActive ? null : now()])->save();
         });
     }
 

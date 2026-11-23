@@ -31,12 +31,17 @@ test('expired renewal starts at approval and expiry boundary is exact', function
 });
 test('legacy migration preserves records and dates without fabricating payments', function () {
     $migration = require database_path('migrations/2026_11_23_154136_create_membership_catalog_and_transactions.php');
-    $migration->down();
+    $legacyMigrationPaths = collect(glob(database_path('migrations/*.php')))
+        ->filter(fn (string $path): bool => basename($path) < '2026_11_23_154136_create_membership_catalog_and_transactions.php')
+        ->values()
+        ->all();
+    $this->artisan('migrate:fresh', ['--force' => true, '--path' => $legacyMigrationPaths, '--realpath' => true])->assertSuccessful();
     $id = DB::table('members')->insertGetId(['member_number' => 'M-LEGACY', 'first_name' => 'Legacy', 'last_name' => 'Member', 'email' => 'legacy@example.com', 'category' => 'student', 'level' => 'gold']);
     $starts = now()->subDays(5)->startOfSecond();
     $expires = now()->addDays(25)->startOfSecond();
     DB::table('subscriptions')->insert(['member_id' => $id, 'category' => 'student', 'level' => 'gold', 'starts_at' => $starts, 'expires_at' => $expires, 'quota_period_started_at' => $starts, 'unit_price_snapshot' => 699, 'total_price_snapshot' => 699]);
     $migration->up();
+    (require database_path('migrations/2026_11_23_211711_add_soft_deletes_to_members_table.php'))->up();
     $member = Member::findOrFail($id);
     expect($member->getAttributes())->toMatchArray(['membership_expires_at' => $expires->format('Y-m-d H:i:s')]);
     expect($member->member_number)->toBe('M-LEGACY')->and($member->category->name)->toBe('Student')->and($member->level->name)->toBe('Gold')->and($member->membership_expires_at->equalTo($expires))->toBeTrue()->and($member->legacy_validity)->toBeTrue()->and($member->is_active)->toBeTrue();

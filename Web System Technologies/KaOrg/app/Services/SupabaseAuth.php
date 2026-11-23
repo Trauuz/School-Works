@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
@@ -26,10 +28,28 @@ class SupabaseAuth
                 $request = $request->withToken($token);
             }
             $response = $request->send($method, $url.'/auth/v1/'.$path, $method === 'GET' ? ['query' => $payload] : ['json' => $payload]);
-        } catch (ConnectionException) {
-            abort(503, 'Authentication is temporarily unavailable. Please try again.');
+        } catch (ConnectionException $exception) {
+            preg_match('/cURL error (\d+)/', $exception->getMessage(), $matches);
+            $curlCode = (int) ($matches[1] ?? 0);
+            Log::warning('Supabase Auth connection failed', ['endpoint' => strtok($path, '?'), 'curl_code' => $curlCode]);
+            abort(503, match ($curlCode) {
+                60 => 'The server could not verify the authentication certificate. Restart the PHP server after configuring its trusted certificates.',
+                28 => 'The authentication service took too long to respond. Please try again shortly.',
+                default => 'The authentication service could not be reached. Please try again shortly.',
+            });
         }
-        abort_if($response->serverError(), 503, 'Authentication is temporarily unavailable. Please try again.');
+        if ($response->serverError()) {
+            $providerCode = $response->json('error_code');
+            $providerMessage = $response->json('msg') ?? $response->json('message');
+            $emailFailure = is_string($providerMessage) && str_contains(strtolower($providerMessage), 'sending') && str_contains(strtolower($providerMessage), 'email');
+            Log::warning('Supabase Auth request failed', ['endpoint' => strtok($path, '?'), 'status' => $response->status(), 'provider_code' => is_string($providerCode) && preg_match('/\A[a-z_]{1,80}\z/', $providerCode) ? $providerCode : null, 'email_delivery_failed' => $emailFailure]);
+            abort(503, $emailFailure ? 'The confirmation email could not be sent. The administrator needs to check Supabase email delivery settings before you try again.' : 'The authentication service is temporarily unavailable. Please try again shortly.');
+        }
+        if ($response->status() === 429 && isset($payload['email'])) {
+            $retry = max(60, min(86400, (int) $response->header('Retry-After')));
+            RateLimiter::clear('verification:'.hash('sha256', mb_strtolower(trim($payload['email']))));
+            RateLimiter::hit('verification:'.hash('sha256', mb_strtolower(trim($payload['email']))), $retry);
+        }
         if (! $response->successful()) {
             throw ValidationException::withMessages(['auth' => $response->status() === 429 ? 'Too many attempts. Please wait before trying again.' : 'Unable to complete authentication. Check your details or request a new confirmation link.']);
         }
@@ -51,16 +71,31 @@ class SupabaseAuth
         }
         $email = Str::lower(trim($identity['email']));
         $user = DB::transaction(function () use ($identity, $email): User {
+            $claimedUsername = data_get($identity, 'user_metadata.username');
+            if (is_string($claimedUsername)) {
+                DB::table('username_reservations')->where('username', mb_strtolower($claimedUsername))->lockForUpdate()->first();
+            }
             $user = User::where('supabase_id', $identity['id'])->lockForUpdate()->first()
                 ?? User::whereRaw('LOWER(email) = ?', [$email])->lockForUpdate()->first();
             if ($user?->supabase_id && $user->supabase_id !== $identity['id']) {
                 throw ValidationException::withMessages(['auth' => 'This email is already connected to a different account.']);
             }
             $user ??= new User(['name' => $email, 'email' => $email]);
+            $username = data_get($identity, 'user_metadata.username');
+            if (! $user->username && is_string($username) && preg_match('/\A[a-zA-Z0-9_]{3,30}\z/', $username)) {
+                $username = mb_strtolower($username);
+                $reservation = DB::table('username_reservations')->where('username', $username)->first();
+                if (($reservation && mb_strtolower($reservation->email) !== $email) || User::whereRaw('LOWER(username) = ?', [$username])->where('id', '!=', $user->id ?? 0)->exists()) {
+                    throw ValidationException::withMessages(['username' => 'This username is already taken. Contact an administrator for help.']);
+                }
+                $user->username = $username;
+            }
             $user->forceFill(['supabase_id' => $identity['id'], 'email_verified_at' => now(), 'email' => $email])->save();
 
             return $user;
         });
+        $registrationRole = data_get($identity, 'user_metadata.registration_role');
+        $request->session()->put('registration_role', in_array($registrationRole, ['admin', 'member'], true) ? $registrationRole : 'member');
         Auth::login($user);
         $request->session()->regenerate();
         $this->storeTokens($request, $tokens);

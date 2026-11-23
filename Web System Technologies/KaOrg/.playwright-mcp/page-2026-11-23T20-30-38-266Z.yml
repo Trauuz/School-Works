@@ -1,0 +1,18 @@
+- main [ref=e3]:
+  - generic [ref=e5]:
+    - heading "Sign in" [level=1] [ref=e6]
+    - paragraph [ref=e7]: Access your membership or manage the portal.
+    - generic [ref=e8]:
+      - generic [ref=e9]:
+        - generic [ref=e10]: Username
+        - textbox "Username" [active] [ref=e11]
+      - generic [ref=e12]:
+        - generic [ref=e13]: Password
+        - textbox "Password" [ref=e14]
+      - link "Forgot password?" [ref=e15] [cursor=pointer]:
+        - /url: http://127.0.0.1:8000/forgot-password
+      - button "Sign in" [ref=e16] [cursor=pointer]
+    - paragraph [ref=e17]:
+      - text: New here?
+      - link "Sign up" [ref=e18] [cursor=pointer]:
+        - /url: http://127.0.0.1:8000/register

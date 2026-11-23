@@ -15,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        $middleware->trimStrings(except: ['username']);
         $middleware->appendToPriorityList(Authenticate::class, EnsureSupabaseSession::class);
         $middleware->appendToPriorityList(EnsureSupabaseSession::class, EnsureProfileComplete::class);
     })

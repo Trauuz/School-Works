@@ -11,17 +11,21 @@ use Illuminate\Support\Facades\Http;
 
 class WeatherForecast
 {
-    /** @return array{message: string, city: ?string, updated_at: ?string} */
+    /** @return array{message: string, condition: ?string, city: ?string, updated_at: ?string} */
     public function for(User $user): array
     {
-        if (! $user->weather_location_id) {
-            return ['message' => 'Add your city to see local weather.', 'city' => null, 'updated_at' => null];
+        $hasPin = $user->address_latitude !== null && $user->address_longitude !== null;
+        $latitude = $hasPin ? $user->address_latitude : $user->weather_latitude;
+        $longitude = $hasPin ? $user->address_longitude : $user->weather_longitude;
+        $city = $hasPin ? $user->city : $user->weather_city;
+        if ($latitude === null || $longitude === null) {
+            return ['message' => 'Place an address pin to see local weather.', 'condition' => null, 'city' => null, 'updated_at' => null];
         }
         try {
-            return Cache::remember('weather:'.$user->weather_location_id, now()->addMinutes(30), function () use ($user): array {
+            $forecast = Cache::remember('weather:conditions:v1:'.round((float) $latitude, 4).':'.round((float) $longitude, 4), now()->addMinutes(30), function () use ($latitude, $longitude, $user): array {
                 $response = Http::acceptJson()->connectTimeout(3)->timeout(5)->get('https://api.open-meteo.com/v1/forecast', [
-                    'latitude' => $user->weather_latitude, 'longitude' => $user->weather_longitude, 'timezone' => $user->weather_timezone,
-                    'current' => 'weather_code,apparent_temperature,precipitation', 'hourly' => 'weather_code,precipitation_probability', 'forecast_days' => 2,
+                    'latitude' => $latitude, 'longitude' => $longitude, 'timezone' => 'auto',
+                    'current' => 'weather_code,is_day,apparent_temperature,precipitation', 'hourly' => 'weather_code,precipitation_probability', 'forecast_days' => 2,
                 ]);
                 if (! $response->successful()) {
                     throw new \UnexpectedValueException;
@@ -35,7 +39,10 @@ class WeatherForecast
                         throw new \UnexpectedValueException;
                     }
                 }
-                $timezone = $user->weather_timezone;
+                $timezone = $data['timezone'] ?? $user->weather_timezone ?? 'UTC';
+                if (! is_string($timezone) || ! in_array($timezone, \DateTimeZone::listIdentifiers(), true)) {
+                    throw new \UnexpectedValueException;
+                }
                 $now = CarbonImmutable::now($timezone);
                 $codes = [(int) $data['current']['weather_code']];
                 $probabilities = [];
@@ -51,11 +58,32 @@ class WeatherForecast
                 }
                 $message = $this->message($codes, $probabilities, (float) $data['current']['apparent_temperature'], (float) $data['current']['precipitation']);
 
-                return ['message' => $message, 'city' => $user->weather_city, 'updated_at' => CarbonImmutable::parse($data['current']['time'], $timezone)->toIso8601String()];
+                return ['message' => $message, 'condition' => $this->condition((int) $data['current']['weather_code'], (int) ($data['current']['is_day'] ?? 1) === 1), 'city' => null, 'updated_at' => CarbonImmutable::parse($data['current']['time'], $timezone)->toIso8601String()];
             });
+
+            return [...$forecast, 'city' => $city];
         } catch (ConnectionException|\UnexpectedValueException|InvalidFormatException) {
-            return ['message' => 'Weather is temporarily unavailable.', 'city' => $user->weather_city, 'updated_at' => null];
+            return ['message' => 'Weather is temporarily unavailable.', 'condition' => null, 'city' => $city, 'updated_at' => null];
         }
+    }
+
+    private function condition(int $code, bool $isDay): string
+    {
+        return match ($code) {
+            0 => $isDay ? 'Sunny' : 'Clear night',
+            1 => $isDay ? 'Mostly sunny' : 'Mostly clear',
+            2 => 'Partly cloudy',
+            3 => 'Cloudy',
+            45, 48 => 'Foggy',
+            51, 53, 55 => 'Drizzly',
+            56, 57 => 'Freezing drizzle',
+            61, 63, 65, 80, 81, 82 => 'Rainy',
+            66, 67 => 'Freezing rain',
+            71, 73, 75, 77, 85, 86 => 'Snowy',
+            95, 97 => 'Thunderstorms',
+            96, 99 => 'Thunderstorms with hail',
+            default => 'Conditions unavailable',
+        };
     }
 
     /** @param list<int> $codes @param list<int> $probabilities */

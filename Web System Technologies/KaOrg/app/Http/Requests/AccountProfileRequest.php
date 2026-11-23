@@ -34,6 +34,10 @@ class AccountProfileRequest extends FormRequest
 
     protected function prepareForValidation(): void
     {
+        if ($this->routeIs('account.setup.store') && $this->session()->get('registration_role') === 'admin') {
+            $this->merge(['role' => 'admin']);
+        }
+
         $this->merge(['country_code' => strtoupper(trim((string) $this->input('country_code')))]);
     }
 }

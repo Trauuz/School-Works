@@ -1,0 +1,3 @@
+@extends('layouts.auth')
+@section('title', 'Confirm your email · KaOrg')
+@section('content')<section class="login-panel"><h1>Confirm your email</h1><p>Confirm that this email address belongs to you to continue with KaOrg.</p><form method="POST" action="{{ route('auth.confirm') }}">@csrf<input type="hidden" name="confirm_link" value="1"><button class="submit-button">Confirm email</button></form><p><a class="text-link" href="{{ route('verification.notice') }}">Request another link</a></p></section>@endsection

@@ -57,12 +57,12 @@ test('pending cancellation allows a replacement and blocks subsequent payment', 
 });
 test('deactivation prevents transactions payments and approval', function () {
     $transaction = applicationTransaction();
-    $this->actingAs(memberManager())->delete(route('members.destroy', $transaction->member));
+    $this->actingAs(memberManager())->patch(route('members.deactivate', $transaction->member));
     $this->post(route('payments.store'), ['membership_transaction_id' => $transaction->id, 'amount' => (string) ($transaction->fee / 100)])->assertSessionHasErrors('transaction');
     $this->post(route('transactions.store'), ['member_id' => $transaction->member_id, 'type' => 'application'])->assertSessionHasErrors('transaction');
     $paid = applicationTransaction();
     app(MembershipManager::class)->pay($paid, $paid->fee);
-    $this->delete(route('members.destroy', $paid->member));
+    $this->patch(route('members.deactivate', $paid->member));
     $this->patch(route('transactions.approve', $paid))->assertSessionHasErrors('transaction');
 });
 test('all financial actions reject non administrators', function () {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Services\SupabaseAuth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -19,8 +20,16 @@ class AuthenticatedSessionController extends Controller
 
     public function store(Request $request, SupabaseAuth $auth): RedirectResponse
     {
-        $data = $request->validate(['email' => ['required', 'email', 'max:255'], 'password' => ['required', 'string']]);
-        $tokens = $auth->call('POST', 'token?grant_type=password', $data);
+        $data = $request->validate(['username' => ['required', 'string', 'max:30'], 'password' => ['required', 'string']]);
+        $account = User::whereRaw('LOWER(username) = ?', [mb_strtolower(trim($data['username']))])->first();
+        if (! $account) {
+            throw ValidationException::withMessages(['username' => 'The username or password is incorrect.']);
+        }
+        try {
+            $tokens = $auth->call('POST', 'token?grant_type=password', ['email' => $account->email, 'password' => $data['password']]);
+        } catch (ValidationException) {
+            throw ValidationException::withMessages(['username' => 'Unable to sign in. Check your username and password, or try again shortly.']);
+        }
         $user = $auth->establish($request, $tokens);
 
         return redirect()->route($user->profile_completed_at ? 'dashboard' : 'account.setup');

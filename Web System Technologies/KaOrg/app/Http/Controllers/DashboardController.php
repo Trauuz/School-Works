@@ -18,6 +18,6 @@ class DashboardController extends Controller
             return view('account.dashboard', ['member' => $member, 'transactions' => $member?->transactions()->with('payment')->latest()->paginate(10)]);
         }
 
-        return view('dashboard', ['total' => Member::count(), 'active' => Member::active()->count(), 'pending' => MembershipTransaction::where('status', 'Pending')->count(), 'collected' => Payment::sum('amount')]);
+        return view('dashboard', ['total' => Member::count(), 'active' => Member::active()->count(), 'pending' => MembershipTransaction::where('status', 'Pending')->count(), 'collected' => Payment::whereNull('voided_at')->sum('amount')]);
     }
 }

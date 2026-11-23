@@ -9,7 +9,7 @@
 <h2>{{ $label }}</h2>
 <strong class="summary-value">{{ $value }}</strong>
 </div>@endforeach</section>
-<div class="form-actions">
+<div class="form-actions dashboard-actions">
 <a href="{{ route('members.index') }}">View members</a>
 <a href="{{ route('transactions.index') }}">View transactions</a>
 </div>

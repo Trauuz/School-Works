@@ -9,6 +9,37 @@ use Illuminate\Validation\ValidationException;
 
 class LocationSearch
 {
+    /** @return array{address_line: string, city: string, region: string, country_code: string, postal_code: string} */
+    public function reverse(float $latitude, float $longitude): array
+    {
+        $coordinates = ['lat' => round($latitude, 7), 'lon' => round($longitude, 7)];
+
+        return Cache::remember('address:'.hash('sha256', json_encode($coordinates)), now()->addDay(), function () use ($coordinates): array {
+            try {
+                $response = Http::acceptJson()->connectTimeout(3)->timeout(8)
+                    ->get(rtrim(config('services.photon.url'), '/').'/reverse', [...$coordinates, 'limit' => 1, 'radius' => 1, 'lang' => 'en']);
+            } catch (ConnectionException) {
+                throw ValidationException::withMessages(['address' => 'Address lookup is unavailable. You can enter your address manually.']);
+            }
+
+            $address = $response->json('features.0.properties');
+            if (! $response->successful() || ! is_array($address) || empty($address['countrycode'])) {
+                throw ValidationException::withMessages(['address' => 'No address was found for this pin. You can enter your address manually.']);
+            }
+
+            $text = fn (string $key): string => is_string($address[$key] ?? null) ? trim($address[$key]) : '';
+            $street = trim($text('housenumber').' '.$text('street'));
+
+            return [
+                'address_line' => mb_substr(implode(', ', array_unique(array_filter([$street, $text('district') ?: $text('locality')]))), 0, 255),
+                'city' => mb_substr($text('city') ?: $text('county'), 0, 100),
+                'region' => mb_substr($text('state') ?: $text('county'), 0, 100),
+                'country_code' => strtoupper($text('countrycode')),
+                'postal_code' => mb_substr($text('postcode'), 0, 20),
+            ];
+        });
+    }
+
     /** @return list<array{id: int, name: string, admin1: string, country_code: string, latitude: float, longitude: float, timezone: string}> */
     public function search(string $query, string $country): array
     {

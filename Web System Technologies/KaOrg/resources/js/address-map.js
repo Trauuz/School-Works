@@ -2,77 +2,119 @@ import 'leaflet/dist/leaflet.css';
 
 export function initializeAddress() {
     const root = document.querySelector('[data-address-form]');
-    const cityInput = root.querySelector('#city');
-    const countryInput = root.querySelector('#country_code');
-    const locationInput = root.querySelector('#weather_location_id');
-    const status = root.querySelector('[data-city-status]');
-    const results = root.querySelector('[data-city-results]');
-    const search = root.querySelector('[data-city-search]');
     const latitude = root.querySelector('#address_latitude');
     const longitude = root.querySelector('#address_longitude');
-    const details = root.querySelector('.map-details');
     let map;
     let marker;
     let leaflet;
-    let initializing = false;
-    let searchController;
+    let addressController;
+    let addressTimer;
+    let addressVersion = 0;
+    let weatherController;
+    let weatherTimer;
+    let weatherVersion = 0;
+    const weatherStatus = root.querySelector('[data-pin-weather]');
+    const weatherCondition = root.querySelector('[data-pin-weather-condition]');
+    const loadingDialog = document.querySelector('[data-address-loading]');
+    loadingDialog.addEventListener('cancel', (event) => event.preventDefault());
 
-    function clearCity() {
-        locationInput.value = '';
-        results.replaceChildren();
-        status.textContent = 'No weather city selected. You can still save your address.';
+    function setAddressLoading(isLoading) {
+        root.setAttribute('aria-busy', String(isLoading));
+        document.body.classList.toggle('address-is-loading', isLoading);
+        if (isLoading && !loadingDialog.open) loadingDialog.showModal();
+        if (!isLoading && loadingDialog.open) loadingDialog.close();
     }
-    cityInput.addEventListener('input', clearCity);
-    countryInput.addEventListener('input', clearCity);
-    root.querySelector('[data-city-clear]').addEventListener('click', clearCity);
 
-    search.addEventListener('click', async () => {
-        const query = cityInput.value.trim();
-        const country = countryInput.value.trim().toUpperCase();
-        if (query.length < 2 || !/^[A-Z]{2}$/.test(country)) {
-            status.textContent = 'Enter a city of at least two letters and a two-letter country code.';
+    function cancelWeatherLookup() {
+        weatherVersion += 1;
+        clearTimeout(weatherTimer);
+        weatherController?.abort();
+    }
+
+    function updateWeather() {
+        cancelWeatherLookup();
+        weatherCondition.hidden = true;
+        weatherCondition.textContent = '';
+        const lat = latitude.value;
+        const lng = longitude.value;
+        if (lat === '' || lng === '' || !Number.isFinite(Number(lat)) || !Number.isFinite(Number(lng)) || Math.abs(Number(lat)) > 90 || Math.abs(Number(lng)) > 180) {
+            weatherStatus.textContent = 'Place an address pin to see local weather.';
             return;
         }
-        searchController?.abort();
-        searchController = new AbortController();
-        search.disabled = true;
-        status.textContent = 'Finding matching cities…';
-        results.replaceChildren();
-        try {
-            const url = new URL(root.dataset.searchUrl);
-            url.searchParams.set('q', query);
-            url.searchParams.set('country', country);
-            const response = await fetch(url, { headers: { Accept: 'application/json' }, signal: searchController.signal });
-            if (!response.ok) throw new Error();
-            const data = await response.json();
-            if (cityInput.value.trim() !== query || countryInput.value.trim().toUpperCase() !== country) return;
-            status.textContent = data.results.length ? 'Choose your city below.' : 'No matches found. Try another spelling or continue with your manual address.';
-            for (const city of data.results) {
-                const item = document.createElement('li');
-                const button = document.createElement('button');
-                button.type = 'button';
-                button.className = 'city-result';
-                button.textContent = [city.name, city.admin1, city.country_code].filter(Boolean).join(', ');
-                button.addEventListener('click', () => {
-                    cityInput.value = city.name;
-                    countryInput.value = city.country_code;
-                    root.querySelector('#region').value = city.admin1 || root.querySelector('#region').value;
-                    locationInput.value = city.id;
-                    root.dataset.cityLatitude = city.latitude;
-                    root.dataset.cityLongitude = city.longitude;
-                    status.textContent = `Weather city selected: ${button.textContent}.`;
-                    results.replaceChildren();
-                    if (map && !marker) map.setView([city.latitude, city.longitude], 12);
-                });
-                item.append(button);
-                results.append(item);
+        const version = weatherVersion;
+        weatherStatus.textContent = 'Checking weather at your pin…';
+        weatherTimer = setTimeout(async () => {
+            const controller = new AbortController();
+            weatherController = controller;
+            try {
+                const url = new URL(root.dataset.weatherPreviewUrl);
+                url.searchParams.set('latitude', lat);
+                url.searchParams.set('longitude', lng);
+                const response = await fetch(url, { headers: { Accept: 'application/json' }, signal: controller.signal });
+                if (!response.ok) throw new Error();
+                const weather = await response.json();
+                if (version !== weatherVersion || latitude.value !== lat || longitude.value !== lng) return;
+                weatherStatus.textContent = weather.message;
+                weatherCondition.textContent = weather.condition || '';
+                weatherCondition.hidden = !weather.condition;
+            } catch (error) {
+                if (error.name !== 'AbortError' && version === weatherVersion) {
+                    weatherStatus.textContent = 'Weather is temporarily unavailable. You can still save your address.';
+                }
             }
-        } catch (error) {
-            if (error.name !== 'AbortError') status.textContent = 'City lookup is unavailable. You can enter your address manually and add a weather city later.';
-        } finally {
-            search.disabled = false;
-        }
-    });
+        }, 500);
+    }
+
+    const mapStatus = root.querySelector('[data-map-status]');
+
+    function cancelAddressLookup() {
+        addressVersion += 1;
+        clearTimeout(addressTimer);
+        addressController?.abort();
+        setAddressLoading(false);
+    }
+
+    for (const id of ['address_line', 'city', 'region', 'country_code', 'postal_code']) {
+        root.querySelector(`#${id}`).addEventListener('input', () => {
+            cancelAddressLookup();
+            mapStatus.textContent = 'Address edited manually. Move the pin to look up another address.';
+        });
+    }
+
+    function lookupAddress() {
+        cancelAddressLookup();
+        const lat = latitude.value;
+        const lng = longitude.value;
+        if (lat === '' || lng === '' || !Number.isFinite(Number(lat)) || !Number.isFinite(Number(lng)) || Math.abs(Number(lat)) > 90 || Math.abs(Number(lng)) > 180) return;
+        const version = addressVersion;
+        setAddressLoading(true);
+        mapStatus.textContent = 'Finding address details for this pin…';
+        addressTimer = setTimeout(async () => {
+            const controller = new AbortController();
+            addressController = controller;
+            const timeout = setTimeout(() => controller.abort(), 12000);
+            try {
+                const url = new URL(root.dataset.reverseUrl);
+                url.searchParams.set('latitude', lat);
+                url.searchParams.set('longitude', lng);
+                const response = await fetch(url, { headers: { Accept: 'application/json' }, signal: controller.signal });
+                if (!response.ok) throw new Error();
+                const { address } = await response.json();
+                if (version !== addressVersion || latitude.value !== lat || longitude.value !== lng) return;
+                for (const id of ['address_line', 'city', 'region', 'country_code', 'postal_code']) {
+                    root.querySelector(`#${id}`).value = address[id] || '';
+                }
+                mapStatus.textContent = 'Address details updated. Review them and fill in anything missing before saving.';
+            } catch (error) {
+                if (version === addressVersion) {
+                    mapStatus.textContent = 'Address lookup is unavailable or no nearby address was found. Your pin is kept; enter the address manually.';
+                }
+            } finally {
+                clearTimeout(timeout);
+                if (version === addressVersion) setAddressLoading(false);
+            }
+        }, 500);
+    }
 
     function updateMarker() {
         if (!map) return;
@@ -97,24 +139,27 @@ export function initializeAddress() {
         latitude.value = position.lat.toFixed(7);
         longitude.value = position.lng.toFixed(7);
         updateMarker();
+        lookupAddress();
+        updateWeather();
     }
-    for (const input of [latitude, longitude]) input.addEventListener('change', updateMarker);
+    for (const input of [latitude, longitude]) {
+        input.addEventListener('input', () => { cancelAddressLookup(); cancelWeatherLookup(); });
+        input.addEventListener('change', () => { updateMarker(); lookupAddress(); updateWeather(); });
+    }
     root.querySelector('[data-pin-clear]').addEventListener('click', () => {
+        cancelAddressLookup();
         latitude.value = '';
         longitude.value = '';
         updateMarker();
+        updateWeather();
+        mapStatus.textContent = 'Pin removed. You can still edit and save your address.';
     });
-    details.addEventListener('toggle', async () => {
-        if (!details.open) return;
-        if (map) { map.invalidateSize(); return; }
-        if (initializing) return;
-        initializing = true;
+    async function initializeMap() {
         try {
             leaflet = await import('leaflet');
             const hasPin = latitude.value !== '' && longitude.value !== '';
-            const hasCity = root.dataset.cityLatitude !== '' && root.dataset.cityLongitude !== '';
-            const center = hasPin ? [Number(latitude.value), Number(longitude.value)] : hasCity ? [Number(root.dataset.cityLatitude), Number(root.dataset.cityLongitude)] : [12.8797, 121.774];
-            map = leaflet.map(root.querySelector('[data-address-map]')).setView(center, hasPin ? 15 : hasCity ? 12 : 5);
+            const center = hasPin ? [Number(latitude.value), Number(longitude.value)] : [12.8797, 121.774];
+            map = leaflet.map(root.querySelector('[data-address-map]')).setView(center, hasPin ? 15 : 5);
             const tiles = leaflet.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -126,8 +171,8 @@ export function initializeAddress() {
             updateMarker();
         } catch {
             root.querySelector('[data-map-status]').textContent = 'The map could not load. Enter coordinates directly or leave the pin blank.';
-        } finally {
-            initializing = false;
         }
-    });
+    }
+    initializeMap();
+    updateWeather();
 }

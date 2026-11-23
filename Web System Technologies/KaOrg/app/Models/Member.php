@@ -7,11 +7,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
 class Member extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = ['first_name', 'last_name', 'email', 'phone', 'membership_category_id', 'membership_level_id'];
 
@@ -50,6 +53,11 @@ class Member extends Model
     public function transactions(): HasMany
     {
         return $this->hasMany(MembershipTransaction::class);
+    }
+
+    public function latestTransaction(): HasOne
+    {
+        return $this->hasOne(MembershipTransaction::class)->latestOfMany();
     }
 
     public function scopeActive(Builder $query): Builder

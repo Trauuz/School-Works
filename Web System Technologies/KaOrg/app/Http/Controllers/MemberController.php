@@ -48,12 +48,13 @@ class MemberController extends Controller
     {
         $member = DB::transaction(function () use ($request, $manager): Member {
             $member = Member::create($request->validated());
-            $manager->create($member, 'application');
+            $transaction = $manager->create($member, 'application');
+            $manager->pay($transaction, $transaction->fee);
 
             return $member;
         });
 
-        return redirect()->route('members.show', $member)->with('success', 'Member registered. Application awaiting payment.');
+        return redirect()->route('members.show', $member)->with('success', 'Member registered. Membership fee recorded as paid.');
     }
 
     public function show(Member $member): View
@@ -76,10 +77,22 @@ class MemberController extends Controller
         return redirect()->route('members.show', $member)->with('success', 'Member updated.');
     }
 
-    public function destroy(Member $member): RedirectResponse
+    public function deactivate(Member $member): RedirectResponse
     {
         $member->forceFill(['deactivated_at' => $member->deactivated_at ?? now()])->save();
 
         return redirect()->route('members.show', $member)->with('success', 'Member deactivated. History preserved.');
+    }
+
+    public function destroy(Member $member): RedirectResponse
+    {
+        DB::transaction(function () use ($member): void {
+            $member = Member::query()->lockForUpdate()->findOrFail($member->id);
+            $member->forceFill(['deactivated_at' => $member->deactivated_at ?? now()])->save();
+            $member->transactions()->where('status', 'Pending')->update(['status' => 'Cancelled']);
+            $member->delete();
+        });
+
+        return redirect()->route('members.index')->with('success', 'Member deleted. Payment and transaction history preserved.');
     }
 }

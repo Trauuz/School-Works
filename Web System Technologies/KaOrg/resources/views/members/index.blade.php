@@ -45,9 +45,12 @@
 <td>{{ $member->category->name }}</td>
 <td>{{ $member->level->name }}</td>
 <td>{{ $member->deactivated_at ? 'Deactivated' : ($member->is_active ? 'Active' : 'No current membership') }}</td>
-<td>
+<td><div class="row-actions">
 <a href="{{ route('members.edit',$member) }}">Edit</a>
-</td>
+<form data-confirm="Delete this member? They will be removed from the directory. Payment and transaction history will be preserved." method="POST" action="{{ route('members.destroy', $member) }}">
+@csrf @method('DELETE')<button class="row-action-danger" type="submit">Delete</button>
+</form>
+</div></td>
 </tr>@empty<tr>
 <td colspan="5">No members found. Register a member or change your filters.</td>
 </tr>@endforelse</tbody>

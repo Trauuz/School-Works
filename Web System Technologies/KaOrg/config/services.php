@@ -1,9 +1,14 @@
 <?php
 
 return [
+    'photon' => [
+        'url' => env('PHOTON_URL', 'https://photon.komoot.io'),
+    ],
+
     'supabase' => [
         'url' => env('SUPABASE_URL'),
         'key' => env('SUPABASE_PUBLISHABLE_KEY'),
+        'verification_resend_seconds' => 60,
     ],
 
     /*

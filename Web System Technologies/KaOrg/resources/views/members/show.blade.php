@@ -7,6 +7,7 @@
 </div>
 <a class="primary-action" href="{{ route('members.edit',$member) }}">Edit member</a>
 </header>
+<div class="member-details">
 <section class="profile-panel">
 <dl class="detail-list">
 <div>
@@ -30,10 +31,16 @@
 <dd>{{ $member->membership_expires_at?->format('M j, Y H:i') ?? 'Awaiting approved application' }}{{ $member->legacy_validity ? ' (legacy membership)' : '' }}</dd>
 </div>
 </dl>
-@if(!$member->deactivated_at)<div class="form-actions">
+<div class="form-actions">
+@if(!$member->deactivated_at)
 <a class="primary-action" href="{{ route('transactions.create',['member'=>$member->id]) }}">Create transaction</a>
-<form data-confirm="Deactivate this member? Their history will be preserved." method="POST" action="{{ route('members.destroy',$member) }}">@csrf @method('DELETE')<button class="danger-action">Deactivate member</button>
+<form data-confirm="Deactivate this member? Their history will be preserved." method="POST" action="{{ route('members.deactivate',$member) }}">@csrf @method('PATCH')<button class="danger-action">Deactivate member</button>
 </form>
-</div>@endif</section>
+@endif
+<form data-confirm="Delete this member? They will be removed from the directory. Payment and transaction history will be preserved." method="POST" action="{{ route('members.destroy', $member) }}">
+@csrf @method('DELETE')<button class="danger-action" type="submit">Delete member</button>
+</form>
+</div></section>
 <h2>Transaction history</h2>@include('transactions._table')<div class="pagination">{{ $transactions->links() }}</div>
+</div>
 @endsection

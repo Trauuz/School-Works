@@ -5,7 +5,10 @@
 <h1>{{ ucfirst($transaction->type) }} transaction</h1>
 <p>{{ $transaction->reference }}</p>
 </div>
+@if($transaction->member->trashed())<span>{{ $transaction->member->full_name }} (deleted)</span>
+@else
 <a href="{{ auth()->user()->can_manage_members ? route('members.show',$transaction->member) : route('dashboard') }}">{{ $transaction->member->full_name }}</a>
+@endif
 </header>
 <section class="profile-panel">
 <dl class="detail-list">

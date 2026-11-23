@@ -6,6 +6,7 @@
 </header>
 <section class="profile-panel receipt">
 <h2>KaOrg · Payment receipt</h2>
+@if($payment->voided_at)<p role="status">This payment was marked unpaid on {{ $payment->voided_at->format('M j, Y H:i') }} and is excluded from collected payments.</p>@endif
 <dl class="detail-list">
 <div>
 <dt>Transaction reference</dt>

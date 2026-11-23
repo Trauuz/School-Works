@@ -20,12 +20,12 @@ class MembershipTransaction extends Model
 
     public function member(): BelongsTo
     {
-        return $this->belongsTo(Member::class);
+        return $this->belongsTo(Member::class)->withTrashed();
     }
 
     public function payment(): HasOne
     {
-        return $this->hasOne(Payment::class);
+        return $this->hasOne(Payment::class)->whereNull('voided_at');
     }
 
     public function getDisplayStatusAttribute(): string

@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\View\View;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class PasswordController extends Controller
 {
@@ -21,14 +22,21 @@ class PasswordController extends Controller
     public function email(Request $request, SupabaseAuth $auth): RedirectResponse
     {
         $data = $request->validate(['email' => ['required', 'email', 'max:255']]);
-        $auth->call('POST', 'recover?redirect_to='.rawurlencode(route('auth.confirm')), $data);
+        $auth->call('POST', 'recover?redirect_to='.rawurlencode(route('auth.confirm', ['flow' => 'recovery'])), $data);
 
         return back()->with('success', 'If an account exists, a password reset email has been requested.');
     }
 
-    public function reset(Request $request): View
+    public function reset(Request $request): View|RedirectResponse
     {
-        $this->recovery($request);
+        if ($request->has('token_hash')) {
+            return redirect()->route('auth.confirm', ['token_hash' => $request->query('token_hash'), 'type' => 'recovery'])->withHeaders(['Cache-Control' => 'no-store', 'Referrer-Policy' => 'no-referrer']);
+        }
+        try {
+            $this->recovery($request);
+        } catch (HttpException) {
+            return view('auth.callback', ['flow' => 'recovery']);
+        }
 
         return view('auth.reset-password');
     }

@@ -52,6 +52,9 @@ class AccountSetup
         $profile = array_intersect_key($attributes, array_flip(['phone', 'address_line', 'city', 'region', 'country_code', 'postal_code', 'address_latitude', 'address_longitude']));
         $profile['phone'] ??= null;
         $profile += ['weather_location_id' => null, 'weather_city' => null, 'weather_latitude' => null, 'weather_longitude' => null, 'weather_timezone' => null];
+        if (isset($attributes['address_latitude'], $attributes['address_longitude'])) {
+            return $profile;
+        }
         if (! empty($attributes['weather_location_id'])) {
             $city = $this->locations->find((int) $attributes['weather_location_id']);
             if (strcasecmp($city['name'], $attributes['city']) !== 0 || $city['country_code'] !== $attributes['country_code']) {

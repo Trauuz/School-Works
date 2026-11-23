@@ -1,31 +1,46 @@
 services:
   - type: web
-    name: pos-system
+    name: kaorg
     runtime: docker
     plan: free
-    rootDir: Web System Technologies/POS_System
-    healthCheckPath: /
+    rootDir: Web System Technologies/KaOrg
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /up
     envVars:
-      - key: CI_ENVIRONMENT
+      - key: APP_ENV
         value: production
-  - type: web
-    name: electriccompany
-    runtime: docker
-    plan: free
-    rootDir: Web System Technologies/electriccompany
-    healthCheckPath: /
-    envVars:
-      - key: CI_ENVIRONMENT
-        value: production
-      - key: DB_HOST
+      - key: APP_NAME
+        value: KaOrg
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_KEY
         sync: false
-      - key: DB_DATABASE
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: DB_CONNECTION
+        value: supabase
+      - key: SUPABASE_DB_HOST
         sync: false
-      - key: DB_USERNAME
+      - key: SUPABASE_DB_PORT
+        value: "5432"
+      - key: SUPABASE_DB_DATABASE
+        value: postgres
+      - key: SUPABASE_DB_USERNAME
         sync: false
-      - key: DB_PASSWORD
+      - key: SUPABASE_DB_PASSWORD
         sync: false
-      - key: DB_PORT
+      - key: SUPABASE_DB_SSLMODE
+        value: require
+      - key: SUPABASE_URL
         sync: false
-      - key: DB_SSL
+      - key: SUPABASE_PUBLISHABLE_KEY
+        sync: false
+      - key: SESSION_DRIVER
+        value: database
+      - key: SESSION_SECURE_COOKIE
         value: "true"
+      - key: CACHE_STORE
+        value: database
+      - key: QUEUE_CONNECTION
+        value: sync
