@@ -8,6 +8,7 @@ use Carbon\Exceptions\InvalidFormatException;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class WeatherForecast
 {
@@ -28,20 +29,20 @@ class WeatherForecast
                     'current' => 'weather_code,is_day,apparent_temperature,precipitation', 'hourly' => 'weather_code,precipitation_probability', 'forecast_days' => 2,
                 ]);
                 if (! $response->successful()) {
-                    throw new \UnexpectedValueException;
+                    throw new \UnexpectedValueException('provider_http_'.$response->status());
                 }
                 $data = $response->json();
                 if (! is_array($data) || ! isset($data['current']['weather_code'], $data['current']['apparent_temperature'], $data['current']['precipitation'], $data['current']['time'], $data['hourly']['time'], $data['hourly']['weather_code'], $data['hourly']['precipitation_probability'])) {
-                    throw new \UnexpectedValueException;
+                    throw new \UnexpectedValueException('missing_forecast_fields');
                 }
                 foreach (['time', 'weather_code', 'precipitation_probability'] as $field) {
                     if (! is_array($data['hourly'][$field])) {
-                        throw new \UnexpectedValueException;
+                        throw new \UnexpectedValueException('invalid_hourly_fields');
                     }
                 }
                 $timezone = $data['timezone'] ?? $user->weather_timezone ?? 'UTC';
                 if (! is_string($timezone) || ! in_array($timezone, \DateTimeZone::listIdentifiers(), true)) {
-                    throw new \UnexpectedValueException;
+                    throw new \UnexpectedValueException('invalid_timezone');
                 }
                 $now = CarbonImmutable::now($timezone);
                 $codes = [(int) $data['current']['weather_code']];
@@ -50,7 +51,7 @@ class WeatherForecast
                     $hour = CarbonImmutable::parse($time, $timezone);
                     if ($hour->gte($now) && $hour->lte($now->addHours(6))) {
                         if (! isset($data['hourly']['weather_code'][$index], $data['hourly']['precipitation_probability'][$index])) {
-                            throw new \UnexpectedValueException;
+                            throw new \UnexpectedValueException('incomplete_hourly_forecast');
                         }
                         $codes[] = (int) $data['hourly']['weather_code'][$index];
                         $probabilities[] = (int) $data['hourly']['precipitation_probability'][$index];
@@ -62,7 +63,18 @@ class WeatherForecast
             });
 
             return [...$forecast, 'city' => $city];
-        } catch (ConnectionException|\UnexpectedValueException|InvalidFormatException) {
+        } catch (ConnectionException|\UnexpectedValueException|InvalidFormatException $exception) {
+            preg_match('/cURL error (\d+)/', $exception->getMessage(), $matches);
+            Log::warning('Weather lookup failed', [
+                'provider' => 'open-meteo',
+                'reason' => match (true) {
+                    $exception instanceof ConnectionException => 'connection_failure',
+                    $exception instanceof InvalidFormatException => 'invalid_forecast_time',
+                    default => $exception->getMessage(),
+                },
+                'curl_code' => isset($matches[1]) ? (int) $matches[1] : null,
+            ]);
+
             return ['message' => 'Weather is temporarily unavailable.', 'condition' => null, 'city' => $city, 'updated_at' => null];
         }
     }

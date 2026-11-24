@@ -6,6 +6,7 @@ use App\Services\LocationSearch;
 use App\Services\WeatherForecast;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 uses(RefreshDatabase::class);
 beforeEach(function () {
@@ -162,3 +163,20 @@ test('unavailable weather has no misleading condition label', function () {
     Http::fake(['api.open-meteo.com/*' => Http::response([], 503)]);
     expect($weather->for(weatherUser())['condition'])->toBeNull();
 });
+
+test('weather failures log actionable reasons without exposing the pinned coordinates', function (string $failure, string $reason, ?int $curlCode) {
+    Log::spy();
+    Http::fake(['api.open-meteo.com/*' => match ($failure) {
+        'forbidden' => Http::response([], 403),
+        'rate_limit' => Http::response([], 429),
+        'malformed' => Http::response(['current' => []]),
+        default => Http::failedConnection('cURL error 28: Operation timed out'),
+    }]);
+    expect(app(WeatherForecast::class)->for(weatherUser())['message'])->toBe('Weather is temporarily unavailable.');
+    Log::shouldHaveReceived('warning')->once()->with('Weather lookup failed', ['provider' => 'open-meteo', 'reason' => $reason, 'curl_code' => $curlCode]);
+})->with([
+    ['forbidden', 'provider_http_403', null],
+    ['rate_limit', 'provider_http_429', null],
+    ['malformed', 'missing_forecast_fields', null],
+    ['timeout', 'connection_failure', 28],
+]);
